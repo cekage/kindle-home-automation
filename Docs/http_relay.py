@@ -14,7 +14,7 @@ import BaseHTTPServer
 
 HOST_NAME = 'mbp'        #!!!REMEMBER TO CHANGE THIS!!!
 PORT_NUMBER = 8080       #!!!REMEMBER TO CHANGE THIS!!!
-TTYFILE = "/dev/msp430"  #!!!REMEMBER TO CHANGE THIS!!!
+TTYFILE = "/dev/null"  #!!!REMEMBER TO CHANGE THIS!!!
 
 class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     """ basic http handler """

@@ -13,10 +13,11 @@ as the name is changed.
 
  0. You just DO WHAT THE FUCK YOU WANT TO.
 
-TODO : optimize
+Illustrate filter.h, in this example we first check "cvm" by MAGIC
+then check "Suppleme"ntarInfoBox by MAGIC too.
 
-Build : cc -Werror  -Wall -ggdb -pedantic -std=c99 -O0 -fno-stack-protector -lm readlog.c -o readlog
-
+Then filter with a expensive regex (which can be bypased in fact)
+and then extract room / asin from SupplementarInfoBox
 */
 
 #define _GNU_SOURCE
@@ -26,7 +27,6 @@ Build : cc -Werror  -Wall -ggdb -pedantic -std=c99 -O0 -fno-stack-protector -lm 
 #include <stdint.h>
 #include <inttypes.h>
 #include <string.h>
-//#include <regex.h>
 #include <sys/param.h>
 
 #ifndef FILTER_H
@@ -35,13 +35,23 @@ Build : cc -Werror  -Wall -ggdb -pedantic -std=c99 -O0 -fno-stack-protector -lm 
 
 #include "./htmlrequest.h"
 
+// in string : 'cvm['
+#define MAGIC_CVM  0x5b6d7663
 
-#define MAGIC_SupplementarInfoBox 0x656d656c70707553 // "Suppleme"
+// in string : 'Suppleme'
+#define MAGIC_SupplementarInfoBox 0x656d656c70707553
 
 static void extractdata_SupplementarInfoBox(const char** line, char** asin, char** word);
 static bool check_regexp_SupplementarInfoBox(const char* line[STATIC_MAXGETLINE]);
 void process_SupplementarInfoBox(const char* line[STATIC_MAXGETLINE]);
 static bool check_MAGIC_SupplementarInfoBox(const char* line[STATIC_MAXGETLINE]);
+static bool checkMAGIC_CVM(const char* line[STATIC_MAXGETLINE]);
+
+static bool checkMAGIC_CVM(const char* line[STATIC_MAXGETLINE]) {
+    //~ (void)printf("\OKx %"PRIx32" vs %"PRIx32" ", (uint32_t) *log_prefix, (uint32_t)MAGIC_CVM );
+    uint32_t* log_prefix = (uint32_t*) *line;
+    return *log_prefix == MAGIC_CVM;
+}
 
 static bool check_MAGIC_SupplementarInfoBox(const char* line[STATIC_MAXGETLINE]) {
     bool result = false;

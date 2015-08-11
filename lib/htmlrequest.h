@@ -38,9 +38,7 @@ void do_http_request(const char* room);
 
 #define PORT 8080
 #define USERAGENT "kindle DOMOTIQUE"
-
-
-
+#define MAX_ROOMNAME 32
 
 static int create_tcp_socket(void) {
     int sock;
@@ -50,7 +48,6 @@ static int create_tcp_socket(void) {
     }
     return sock;
 }
-
 
 static char* get_ip(const char* host) {
     struct hostent* hent;
@@ -110,14 +107,13 @@ static void print_http_response(const int socket) {
 void do_http_request(const char* room) {
     struct sockaddr_in* remote;
     int sock;
-    ssize_t tmpres;
     char* ip;
     char* get;
     const char* host = "mbp";
-    char page[32];
-    snprintf(page, 31, "?toggle=%s", room);
-    size_t sent;
+    char page[MAX_ROOMNAME+1];
     int pton_result;
+    size_t sent;
+    (void)snprintf(page, MAX_ROOMNAME, "?toggle=%s", room);
     sock = create_tcp_socket();
     remote = malloc(sizeof(struct sockaddr_in*));
     if (remote == NULL) {
@@ -143,6 +139,7 @@ void do_http_request(const char* room) {
     //Send the query to the server
     sent = 0;
     while (sent < strlen(get)) {
+        static ssize_t tmpres;
         tmpres = send(sock, get + sent, strlen(get) - sent, 0);
         if (tmpres == -1) {
             perror("Can't send query");

@@ -13,10 +13,7 @@ as the name is changed.
 
  0. You just DO WHAT THE FUCK YOU WANT TO.
 
-TODO : optimize
-
-Build : cc -Werror  -Wall -ggdb -pedantic -std=c99 -O0 -fno-stack-protector -lm readlog.c -o readlog
-
+This is a basis for filters. See filter_cvm as an example.
 */
 
 #define _GNU_SOURCE
@@ -42,19 +39,8 @@ Build : cc -Werror  -Wall -ggdb -pedantic -std=c99 -O0 -fno-stack-protector -lm 
 #define STATIC_MAXGETLINE
 #endif
 
-// in string : 'cvm['
-#define MAGIC_CVM  0x5b6d7663
-
-bool checkMAGIC_CVM(const char* line[STATIC_MAXGETLINE]);
 bool check_regexp(const char* line[STATIC_MAXGETLINE], const char* regexp[STATIC_MAXGETLINE]);
 char* extract_substring(const char** src, char** dst, const char key_start, const char key_stop);
-
-
-bool checkMAGIC_CVM(const char* line[STATIC_MAXGETLINE]) {
-    //~ (void)printf("\OKx %"PRIx32" vs %"PRIx32" ", (uint32_t) *log_prefix, (uint32_t)MAGIC_CVM );
-    uint32_t* log_prefix = (uint32_t*) *line;
-    return *log_prefix == MAGIC_CVM;
-}
 
 bool check_regexp(const char* line[STATIC_MAXGETLINE], const char* filter[STATIC_MAXGETLINE]) {
     // Big waste of time, don't forget checkMAGIC before !!
