@@ -31,14 +31,14 @@ static void get_stdin_line(void) {
     char* line = NULL;
     while (-1 != (read = getline(&line, &len, stdin))) {
         if (1 < read) {
-        line[read-1] = '\0';
-        process_SupplementarInfoBox((const char**)&line);
+            line[read - 1] = '\0';
+            process_SupplementarInfoBox((const char**)&line);
         }
     }
     free(line);
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     get_stdin_line();
     exit(0);
 }

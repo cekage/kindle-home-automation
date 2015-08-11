@@ -1,0 +1,650 @@
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Bookworm:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=24,pages=5:Updated temperature and pages
+cvm[1234]: I Reader:BOOK INFO:book asin=unknown,file size=239,file last mod date=2015-07-18 11.43.04 -0719,content type=ebook,length=MobiPosition_ 239,access=2015-08-04 02.31.55 -0719,last read position=MobiPosition_ 0,isEncrypted=false,isSample=false,isNew=false,isTTSMetdataPresent=false,isTTSMetadataAllowed=true,fileExtn=txt:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Reader:Information::Reader.setUpGUIForBook()
+cvm[1234]: I SidecarPageNumberProvider:Information::Page number sidecar unavailable
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.pagecontentview.qb:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+fermeture .txt
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=1,newCursorIndex=0:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=Home:
+cvm[1234]: I WebServicesImpl:UploadAnnotations::first journal empty
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I GUIManager:HomeViewSwitch:view=HomeView:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+reouverture .txt
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Bookworm:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=24,pages=5:Updated temperature and pages
+cvm[1234]: I Reader:BOOK INFO:book asin=unknown,file size=239,file last mod date=2015-07-18 11.43.04 -0719,content type=ebook,length=MobiPosition_ 239,access=2015-08-04 02.34.00 -0719,last read position=MobiPosition_ 0,isEncrypted=false,isSample=false,isNew=false,isTTSMetdataPresent=false,isTTSMetadataAllowed=true,fileExtn=txt:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Reader:Information::Reader.setUpGUIForBook()
+cvm[1234]: I SidecarPageNumberProvider:Information::Page number sidecar unavailable
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.pagecontentview.qb:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+
+cvm[1234]: I WirelessImpl:EnsureConnectionSkipped:currentConnection=wifi,lastConnection=wifi,currentTime=9435.72,lastConnectionTime=9434.74,inSuspendCounter=6,lastInSuspendCounter=6:
+cvm[1234]: I TaskProcess:ProcessingToDo:numItems=1,todoReason=NetworkStartup,wanRingSource=NONE:Processing ToDo items
+cvm[1234]: I TaskProcess:ProcessingStarting:action=UPLOAD,type=MESG,key=NONE:Start processing item.
+cvm[1234]: I TaskProcess:ProcessingFinished:action=UPLOAD,type=MESG,key=NONE,status=COMPLETED:
+cvm[1234]: I TaskProcess:ProcessingFinished:action=UPLOAD,type=MESG,key=NONE,status=COMPLETED:
+cvm[1234]: I WirelessImpl:EnsureConnectionSkipped:currentConnection=wifi,lastConnection=wifi,currentTime=9435.91,lastConnectionTime=9434.74,inSuspendCounter=6,lastInSuspendCounter=6:
+cvm[1234]: I WebServicesImpl:UploadReadingExperienceJournal::Null input stream
+cvm[1234]: I TaskProcess:ProcessingTaskList:loc=10:done processing todo list
+cvm[1234]: I lipc:evts:name=todoCompleted, origin=com.lab126.framework:Event sent
+cvm[1234]: I TaskProcess:DeferStatus:defer=false:Setting defer status
+cvm[1234]: I Search:INDEXING_THREAD_START::
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Search:CHECKING_FREE_SPACE:path=/mnt/us/documents,KB=1141088:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Search:CHECKING_FREE_SPACE:path=/mnt/us/documents,KB=1141088:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Search:CHECKING_FREE_SPACE:path=/mnt/us/documents,KB=1141088:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Search:CHECKING_FREE_SPACE:path=/mnt/us/documents,KB=1141088:
+cvm[1234]: I Search:INDEXING_THREAD_FINISH:milliseconds=4527:
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_NextPage:User pressed Right Side Turn Next Page button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_NextPage:User pressed Right Side Turn Next Page button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_NextPage:User pressed Right Side Turn Next Page button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_PrevPage:User pressed Right Side Turn Prev Page button
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Bookworm:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=24,pages=5:Updated temperature and pages
+cvm[1234]: I Reader:BOOK INFO:book asin=B00VAP33VC,file size=15738464,file last mod date=2015-06-18 12.58.36 -0719,content type=ebook,length=HTMLPosition_ 256298,access=2015-06-18 12.58.36 -0719,last read position=HTMLPosition_ 0,isEncrypted=true,isSample=false,isNew=true,isTTSMetdataPresent=true,isTTSMetadataAllowed=true,fileExtn=azw3:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I HTMLBookViewer:Information::Request to open B00VAP33VCis processed sucessfully
+cvm[1234]: I Reader:Information::Reader.setUpGUIForBook()
+cvm[1234]: I SidecarPageNumberProvider:Information::Page number sidecar unavailable
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.pagecontentview.qb:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=24,pages=5:Updated temperature and pages
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Left_NextPage:User pressed Left Side Turn Next Page button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=1,newCursorIndex=0:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=Home:
+cvm[1234]: I WebServicesImpl:UploadAnnotations::first journal empty
+cvm[1234]: I Reader:SYNC LPR:position=6668:Send LPR to server
+cvm[1234]: I HTMLBookViewer:Information::HTMLBookViewer closeBook save last read position 6668
+cvm[1234]: I HTMLBookViewer:Information::Request to close B00VAP33VC is processed successfully
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I GUIManager:HomeViewSwitch:view=HomeView:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+cvm[1234]: I HTMLJsonSidecarFile:Information::Delayed Write to sidecar file
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=0,newCursorIndex=0:
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=0,newCursorIndex=0:
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Left_PrevPage:User pressed Left Side Turn Prev Page button
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Bookworm:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=24,pages=5:Updated temperature and pages
+cvm[1234]: I Reader:BOOK INFO:book asin=B00Y0IWHPY,file size=372476,file last mod date=2015-08-01 03.15.16 -0719,content type=ebook,length=HTMLPosition_ 84328,access=2015-08-01 03.15.16 -0719,last read position=HTMLPosition_ 0,isEncrypted=false,isSample=true,isNew=true,isTTSMetdataPresent=true,isTTSMetadataAllowed=false,fileExtn=azw3:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: E Mobi8SDKLogger:Error::Extra header metadata is not 4 bytes long for key 116, Function: getExtraHeaderValuesAsUINT32
+cvm[1234]: I HTMLBookViewer:Information::Request to open B00Y0IWHPYis processed sucessfully
+cvm[1234]: I Reader:Information::Reader.setUpGUIForBook()
+cvm[1234]: I SidecarPageNumberProvider:Information::Page number sidecar unavailable
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.pagecontentview.qb:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=24,pages=5:Updated temperature and pages
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=24,pages=5:Updated temperature and pages
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=24,pages=5:Updated temperature and pages
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=1,newCursorIndex=0:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=Home:
+cvm[1234]: I WebServicesImpl:UploadAnnotations::first journal empty
+cvm[1234]: I HTMLBookViewer:Information::HTMLBookViewer closeBook save last read position 476
+cvm[1234]: I HTMLBookViewer:Information::Request to close B00Y0IWHPY is processed successfully
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I GUIManager:HomeViewSwitch:view=HomeView:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+cvm[1234]: I HTMLJsonSidecarFile:Information::Delayed Write to sidecar file
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.powerd,name=battLevelChanged,arg0=81,arg1=<None>:
+cvm[1234]: I lipc:gip:prop=isCharging, source=com.lab126.powerd:Get int property
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.powerd,name=goingToScreenSaver,arg0=3,arg1=<None>:
+cvm[1234]: I PowerImpl:Information::handlePowerStateChangeEvent 2 3
+cvm[1234]: I ScreenSaverBooklet:SwitchBooklet::last booklet is com.amazon.ebook.booklet.home.v@2fd3a1af
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=ScreenSaverBooklet:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.powerd,name=readyToSuspend,arg0=10,arg1=<None>:
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=51b5315f-77e9-4927-80b1-a9afbe1c4d76,word=Cuisine:
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=51b5315f-77e9-4927-80b1-a9afbe1c4d76,word=Salon:
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=51b5315f-77e9-4927-80b1-a9afbe1c4d76,word=Séjour:
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=51b5315f-77e9-4927-80b1-a9afbe1c4d76,word=Bureau:
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=51b5315f-77e9-4927-80b1-a9afbe1c4d76,word=Entrée:
+cvm[1234]: I PowerImpl:Information::handlePowerStateChangeEvent 4 10
+cXm[1234]: I PowerImpl:Information::handlePowerStateChangeEvent 4 10
+cvm[1234]: I Search:PURGING_INDEX_FINISH:book=y536449d02aaba13a03fb92cb72240455:
+cvm[1234]: I Search:TITLE_LANGUAGE:language=title language is en:
+cvm[1234]: I Search:INDEXING_BOOK_START:book=y536449d02aaba13a03fb92cb72240455,type=content:
+cvm[1234]: I Search:SORTING_BOOK::
+cvm[1234]: I Search:WRITING_INDEX::
+cvm[1234]: I Search:WORDS_IN_BOOK:count=29:
+cvm[1234]: I Search:INDEXING_BOOK_FINISH:book=y536449d02aaba13a03fb92cb72240455,type=content,milliseconds=92:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Search:CHECKING_FREE_SPACE:path=/mnt/us/documents,KB=1237440:
+cvm[1234]: I Search:INDEXING_THREAD_FINISH:milliseconds=6767:
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x298b48 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x298b48, time=6.052979 :
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x298cf8 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x298cf8, time=6.048828 :
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=4ac597de-a25c-4748-bd15-86e0550f713e,word=BUREAU:
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x3e7200 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x3e7200, time=6.051025 :
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x298d70 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x298d70, time=6.973145 :
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=4ac597de-a25c-4748-bd15-86e0550f713e,word=CUISINE:
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x3e7368 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x3e7368, time=6.874268 :
+powerd[1234]: I def:battinfo:cap=72%, mAh=588mAh, volt=3943mV, current=-120mA, temp=77F, bp=3943mV, lmd=821mAh, cycl=17, cyct=17:
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x3e7020 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x3e7020, time=29.724121 :
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=4ac597de-a25c-4748-bd15-86e0550f713e,word=:
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x298d70 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x298d70, time=6.477295 :
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=4ac597de-a25c-4748-bd15-86e0550f713e,word=CUISINE:
+crond[1234]: USER root pid 19406 cmd /usr/sbin/checkpmond
+crond[1234]: USER root pid 19408 cmd /usr/sbin/tinyrot
+crond[1234]: USER root pid 19415 cmd /usr/sbin/loginfo powerdcheck
+system: I tinyrot:def::Rotating file /var/log/messages with max size 256
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=unknown,word=CUISINE:
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Home:User pressed Home button
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=Home:
+cvm[1234]: I WebServicesImpl:UploadAnnotations::first journal empty
+cvm[1234]: I Reader:SYNC LPR:position=3899:Send LPR to server
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I RepositoryController:FETCHED CONTENT FROM CATALOG:numPeriodicals=0,numDictionaries=2,numBooks=78,numArchivedItems=12:
+cvm[1234]: I Keyboard:Information::Keyboard open requested
+cvm[1234]: I Keyboard:Information::Keyboard opened
+cvm[1234]: I Keyboard:Information::Keyboard open requested
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I Keyboard:Information::Keyboard close requested
+cvm[1234]: I Keyboard:KEY_INFO:keysTyped=0,elapsedTime=1826:Keyboard closed
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Menu:User pressed Menu button
+cvm[1234]: I lipc:gip:prop=userstoreTotalSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I GUIManager:HomeViewSwitch:view=ViewInfoView:
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=100,newCursorIndex=99:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Home:
+cvm[1234]: I GUIManager:HomeViewSwitch:view=HomeView:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+cvm[1234]: I GUIManager:HomeViewSwitch:view=ViewInfoView:
+cvm[1234]: E HTMLBook:Error::Failed to get CoverImage from the book 18812ddb-b3de-4ae1-bc3c-538d68b19ad8
+cvm[1234]: I SidecarPageNumberProvider:Information::Page number sidecar unavailable
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Store Booklet:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I StoreMetrics:Information::Metrics collection started for action: startBooklet
+cvm[1234]: I PageManager:Information::pageLoading
+cvm[1234]: E WindowManagerImpl:InvalidOpenCounter:openCounter=-1:Resetting the open counter
+cvm[1234]: I ConnectionService:EnsureConnectionCall:interface=:
+cvm[1234]: I lipc:ssp:prop=ensureConnection, source=com.lab126.cmd:Set string property
+cmd[1234]: I req::Got a connection request::~:
+wifid[1234]: I spectator:dns-ok:t=84471.078413:
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.wifid,name=cmConnected,arg0=<None>,arg1=<None>:
+cvm[1234]: W WifiServiceImpl:UnhandledEvent:event=cmConnected:
+tmd[1234]: I recompute_hpet:none_eligible:next_retry={never} for recompute_retry_time() init,net=wifi,qsize=0:
+cvm[1234]: I ConnectionService:LipcEventArrived:source=com.lab126.cmd,name=connectionAvailable,arg0=<None>,arg1=wifi:
+cvm[1234]: I WirelessImpl:EnsureConnectionStatus:hasConnection=true,reason=ConnectionAvailable:Ensure connection succeeded
+cvm[1234]: I WirelessImpl:EnsureConnectionSkipped:currentConnection=wifi,lastConnection=wifi,currentTime=84471.18,lastConnectionTime=84471.09,inSuspendCounter=40,lastInSuspendCounter=40:
+cvm[1234]: I FetchXymlTask:STORE LOADED URL:wire=687,bytes=2038,time=2341:Fetch url
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I PageManager:Information::pageLoaded
+cvm[1234]: I PageManager:Information::pageLoadedAndPainted
+cvm[1234]: I StoreMetrics:Information::Request complete. Metrics dump:[ac:sb.1,sn:4,c:item_details,tr:WIFI,w:597503;rs:526,rr:2857,ce:2860,xp:3415,pp:3588,pc:3730]
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I StoreMetrics:Information::Metrics collection started for action: back
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=100,newCursorIndex=99:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Store Booklet,to=Home:
+cvm[1234]: I StoreBooklet:Information::Uploading 1 StoreMetric(s) on store shutdown
+cmd[1234]: I req::Got a connection request::~:
+cvm[1234]: I ConnectionService:EnsureConnectionCall:interface=:
+cvm[1234]: I lipc:ssp:prop=ensureConnection, source=com.lab126.cmd:Set string property
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.wifid,name=cmConnected,arg0=<None>,arg1=<None>:
+cvm[1234]: W WifiServiceImpl:UnhandledEvent:event=cmConnected:
+tmd[1234]: I recompute_hpet:none_eligible:next_retry={never} for recompute_retry_time() init,net=wifi,qsize=0:
+cvm[1234]: I ConnectionService:LipcEventArrived:source=com.lab126.cmd,name=connectionAvailable,arg0=<None>,arg1=wifi:
+cvm[1234]: I WirelessImpl:EnsureConnectionStatus:hasConnection=true,reason=ConnectionAvailable:Ensure connection succeeded
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: E HistoryController:Error::Unable to retrieve the collection name from the given metadata
+cvm[1234]: I GUIManager:HomeViewSwitch:view=ViewInfoView:
+cvm[1234]: E HistoryController:Error::Unable to retrieve the collection name from the given metadata
+cvm[1234]: E HTMLBook:Error::Failed to get CoverImage from the book 18812ddb-b3de-4ae1-bc3c-538d68b19ad8
+cvm[1234]: I SidecarPageNumberProvider:Information::Page number sidecar unavailable
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=99,newCursorIndex=98:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Home:
+cvm[1234]: I GUIManager:HomeViewSwitch:view=HomeView:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+cvm[1234]: I GUIManager:HomeViewSwitch:view=CollectionView:
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=99,newCursorIndex=98:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Home:
+cvm[1234]: I GUIManager:HomeViewSwitch:view=HomeView:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Bookworm:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=25,pages=5:Updated temperature and pages
+cvm[1234]: I Reader:BOOK INFO:book asin=3258236f-e9de-416b-bb6f-ed462cd2b1d0,file size=1581789,file last mod date=2014-12-04 06.56.00 -0719,content type=ebook,length=MobiPosition_ 758492,access=2015-08-10 06.28.27 -0719,last read position=MobiPosition_ 3899,isEncrypted=false,isSample=false,isNew=false,isTTSMetdataPresent=false,isTTSMetadataAllowed=true,fileExtn=mobi:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Reader:Information::Reader.setUpGUIForBook()
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.pagecontentview.qb:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Menu:User pressed Menu button
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=1:Updating open/closed menu counter
+cvm[1234]: E FrameBufferManagerImpl:StackError::endUpdate() called more times than beginUpdate()
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Menu:User pressed Menu button
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=0:Updating open/closed menu counter
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Menu:User pressed Menu button
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=1:Updating open/closed menu counter
+cvm[1234]: E FrameBufferManagerImpl:StackError::endUpdate() called more times than beginUpdate()
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=0:Updating open/closed menu counter
+cvm[1234]: I MenuCursorHandler:USER_SOFTKEY_PRESS:KeyPressed=Synch. la dernière page lue:User selected the menu item Synch. la dernière page lue
+cvm[1234]: I AlertImpl:PostingAlert:msg=:Posting an Alert
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=1:Updating open/closed menu counter
+Fiveway wakeup
+powerd[1234]: I def:fiveway::Fiveway press and hold
+powerd[1234]: W def:unhandle:state=e_press_and_hold, evt=ACTIVE:Unhandled event e_press_and_hold in state ACTIVE
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=0:Updating open/closed menu counter
+powerd[1234]: I def:pbpress:time=1439214593.670:Power button pressed
+powerd[1234]: I def:gss:reason=pb:Going to screen saver
+powerd[1234]: I def:statech:prev=ACTIVE, next=SCREEN SAVER:State change: ACTIVE -> SCREEN SAVER
+powerd[1234]: I def:acc::Turn acc port off
+powerd[1234]: I lipc:evts:name=goingToScreenSaver, origin=com.lab126.powerd, fparam=2:Event sent
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.powerd,name=goingToScreenSaver,arg0=2,arg1=<None>:
+cvm[1234]: I PowerImpl:Information::handlePowerStateChangeEvent 2 2
+cvm[1234]: I ScreenSaverBooklet:SwitchBooklet::last booklet is com.amazon.ebook.booklet.reader.ec@62e14a9a
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=ScreenSaverBooklet:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I WebServicesImpl:UploadAnnotations::first journal empty
+cvm[1234]: I Reader:SYNC LPR:position=3899:Send LPR to server
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+powerd[1234]: I def:pbpress:time=1439214602.452:Power button pressed
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.powerd,name=outOfScreenSaver,arg0=1,arg1=<None>:
+cvm[1234]: I PowerImpl:Information::handlePowerStateChangeEvent 3 1
+powerd[1234]: I lipc:evts:name=outOfScreenSaver, origin=com.lab126.powerd, fparam=1:Event sent
+powerd[1234]: I def:statech:prev=SCREEN SAVER, next=ACTIVE:State change: SCREEN SAVER -> ACTIVE
+powerd[1234]: I def:acc::Turn acc port on
+powerd[1234]: E def:usbfs::Failed to open sys entry for USB FS ONLINE
+cvm[1234]: I ScreenSaverBooklet:SSB_TRACE_USB_EXPORT:delayUSBExport=false:Password disabled
+cvm[1234]: I ScreenSaverBooklet:IncrementSSImage::Incrementing the screen saver image index
+cvm[1234]: I ScreenSaverBooklet:SwitchingToLastBooklet:lastBooklet=Bookworm:Switching to last booklet
+cvm[1234]: I BookletManager:SwitchingBooklets:from=ScreenSaverBooklet,to=Bookworm:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=25,pages=5:Updated temperature and pages
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_PrevPage:User pressed Right Side Turn Prev Page button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_NextPage:User pressed Right Side Turn Next Page button
+cvm[1234]: I Keyboard:Information::Keyboard open requested
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=1:Updating open/closed keyboard counter
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=2:Updating open/closed overlay counter
+cvm[1234]: I Keyboard:Information::Keyboard opened
+cvm[1234]: I Keyboard:Information::Keyboard open requested
+cvm[1234]: I Keyboard:Information::Keyboard opened
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=3:Updating open/closed keyboard counter
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I Keyboard:Information::Keyboard close requested
+cvm[1234]: I Keyboard:KEY_INFO:keysTyped=0,elapsedTime=3974:Keyboard closed
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=1:Updating open/closed keyboard counter
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=0:Updating open/closed overlay counter
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=3258236f-e9de-416b-bb6f-ed462cd2b1d0,word=:
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=3258236f-e9de-416b-bb6f-ed462cd2b1d0,word=Pourquoi:
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=3258236f-e9de-416b-bb6f-ed462cd2b1d0,word=:
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=3258236f-e9de-416b-bb6f-ed462cd2b1d0,word=pendant:
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.powerd,name=battLevelChanged,arg0=18,arg1=<None>:
+powerd[1234]: I lipc:evts:name=battLevelChanged, origin=com.lab126.powerd, fparam=18:Event sent
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=25,pages=5:Updated temperature and pages
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_NextPage:User pressed Right Side Turn Next Page button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Left_PrevPage:User pressed Left Side Turn Prev Page button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_NextPage:User pressed Right Side Turn Next Page button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Home:User pressed Home button
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=Home:
+cvm[1234]: I WebServicesImpl:UploadAnnotations::first journal empty
+cvm[1234]: I Reader:SYNC LPR:position=5158:Send LPR to server
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_NextPage:User pressed Right Side Turn Next Page button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_PrevPage:User pressed Right Side Turn Prev Page button
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Bookworm:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=25,pages=5:Updated temperature and pages
+cvm[1234]: I Reader:BOOK INFO:book asin=3258236f-e9de-416b-bb6f-ed462cd2b1d0,file size=1581789,file last mod date=2014-12-04 06.56.00 -0719,content type=ebook,length=MobiPosition_ 758492,access=2015-08-10 06.35.19 -0719,last read position=MobiPosition_ 5158,isEncrypted=false,isSample=false,isNew=false,isTTSMetdataPresent=false,isTTSMetadataAllowed=true,fileExtn=mobi:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Reader:Information::Reader.setUpGUIForBook()
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.pagecontentview.qb:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I Keyboard:Information::Keyboard open requested
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=1:Updating open/closed keyboard counter
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=2:Updating open/closed overlay counter
+cvm[1234]: I Keyboard:Information::Keyboard opened
+cvm[1234]: I Keyboard:Information::Keyboard open requested
+cvm[1234]: I Keyboard:Information::Keyboard opened
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=3:Updating open/closed keyboard counter
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I Keyboard:Information::Keyboard close requested
+cvm[1234]: I Keyboard:KEY_INFO:keysTyped=0,elapsedTime=1395:Keyboard closed
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=1:Updating open/closed keyboard counter
+powerd[1234]: I def:battinfo:cap=18%, mAh=151mAh, volt=3771mV, current=-20mA, temp=77F, bp=3771mV, lmd=820mAh, cycl=18, cyct=18:
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Menu:User pressed Menu button
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=2:Updating open/closed menu counter
+cvm[1234]: E FrameBufferManagerImpl:StackError::endUpdate() called more times than beginUpdate()
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=1:Updating open/closed overlay counter
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=0:Updating open/closed menu counter
+cvm[1234]: I MenuCursorHandler:USER_SOFTKEY_PRESS:KeyPressed=Description du livre:User selected the menu item Description du livre
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=Store Booklet:
+cvm[1234]: I WebServicesImpl:UploadAnnotations::first journal empty
+cvm[1234]: I Reader:SYNC LPR:position=5158:Send LPR to server
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I StoreMetrics:Information::Metrics collection started for action: startBooklet
+cvm[1234]: I PageManager:Information::pageLoading
+cmd[1234]: I req::Got a connection request::~:
+cvm[1234]: I ConnectionService:EnsureConnectionCall:interface=:
+cvm[1234]: I lipc:ssp:prop=ensureConnection, source=com.lab126.cmd:Set string property
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.wifid,name=cmConnected,arg0=<None>,arg1=<None>:
+cvm[1234]: W WifiServiceImpl:UnhandledEvent:event=cmConnected:
+cvm[1234]: I ConnectionService:LipcEventArrived:source=com.lab126.cmd,name=connectionAvailable,arg0=<None>,arg1=wifi:
+cvm[1234]: I WirelessImpl:EnsureConnectionStatus:hasConnection=true,reason=ConnectionAvailable:Ensure connection succeeded
+tmd[1234]: I recompute_hpet:none_eligible:next_retry={never} for recompute_retry_time() init,net=wifi,qsize=0:
+cvm[1234]: I WirelessImpl:EnsureConnectionSkipped:currentConnection=wifi,lastConnection=wifi,currentTime=84836.35,lastConnectionTime=84836.25,inSuspendCounter=40,lastInSuspendCounter=40:
+wifid[1234]: I spectator:dns-ok:t=84836.416125:
+cvm[1234]: I FetchXymlTask:STORE LOADED URL:wire=669,bytes=1818,time=882:Fetch url
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I PageManager:Information::pageLoaded
+cvm[1234]: I PageManager:Information::pageLoadedAndPainted
+cvm[1234]: I StoreMetrics:Information::Request complete. Metrics dump:[ac:sb.1,sn:1,c:item_details,tr:WIFI,w:358;rs:47,rr:928,ce:929,xp:955,pp:1028,pc:1052]
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I StoreMetrics:Information::Metrics collection started for action: back
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=100,newCursorIndex=99:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Store Booklet,to=Bookworm:
+cvm[1234]: I StoreBooklet:Information::Uploading 1 StoreMetric(s) on store shutdown
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I WirelessImpl:EnsureConnectionSkipped:currentConnection=wifi,lastConnection=wifi,currentTime=84839.25,lastConnectionTime=84836.25,inSuspendCounter=40,lastInSuspendCounter=40:
+cvm[1234]: I Reader:Information::Reader.loadState()
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=25,pages=5:Updated temperature and pages
+cvm[1234]: I Reader:BOOK INFO:book asin=3258236f-e9de-416b-bb6f-ed462cd2b1d0,file size=1581789,file last mod date=2014-12-04 06.56.00 -0719,content type=ebook,length=MobiPosition_ 758492,access=2015-08-10 06.35.32 -0719,last read position=MobiPosition_ 5158,isEncrypted=false,isSample=false,isNew=false,isTTSMetdataPresent=false,isTTSMetadataAllowed=true,fileExtn=mobi:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Reader:Information::Reader.setUpGUIForBook()
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Reader:Information::restoring to position: MobiPosition: 5158
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.pagecontentview.qb:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Menu:User pressed Menu button
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=1:Updating open/closed menu counter
+cvm[1234]: E FrameBufferManagerImpl:StackError::endUpdate() called more times than beginUpdate()
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=0:Updating open/closed menu counter
+cvm[1234]: I MenuCursorHandler:USER_SOFTKEY_PRESS:KeyPressed=Afficher notes et surlignements:User selected the menu item Afficher notes et surlignements
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.tabularview.gb:
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=100,newCursorIndex=99:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=Bookworm:
+cvm[1234]: I Reader:Information::Reader.loadState()
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=25,pages=5:Updated temperature and pages
+cvm[1234]: I Reader:Information::restoring to position: MobiPosition: 5158
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.pagecontentview.qb:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=99,newCursorIndex=98:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=Home:
+cvm[1234]: I WebServicesImpl:UploadAnnotations::first journal empty
+cvm[1234]: I Reader:SYNC LPR:position=5158:Send LPR to server
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I GUIManager:HomeViewSwitch:view=HomeView:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Bookworm:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=25,pages=5:Updated temperature and pages
+cvm[1234]: I Reader:BOOK INFO:book asin=9dabdc03-04c7-4ba7-b361-e64526ddd7f5,file size=554211,file last mod date=2015-07-17 03.15.06 -0719,content type=ebook,length=HTMLPosition_ 800424,access=2015-08-09 01.48.59 -0719,last read position=HTMLPosition_ 241908,isEncrypted=false,isSample=false,isNew=false,isTTSMetdataPresent=false,isTTSMetadataAllowed=true,fileExtn=azw3:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/open_uri, msg=0x3e72f0 :
+webreader[1234]: I def:asyncCommandSentOnLast:Sent the delayed response, msg=0x3e72f0, time=153.825928 :
+webreader[1234]: C def:after_draw_cb: ***** Book is Shown (6897 Pixels High) ***** :
+cvm[1234]: I HTMLBookViewer:Information::Request to open 9dabdc03-04c7-4ba7-b361-e64526ddd7f5is processed sucessfully
+cvm[1234]: I Reader:Information::Reader.setUpGUIForBook()
+cvm[1234]: I SidecarPageNumberProvider:Information::Page number sidecar unavailable
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.pagecontentview.qb:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x298b48 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x298b48, time=6.947021 :
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Menu:User pressed Menu button
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=1:Updating open/closed menu counter
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x3e7368 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x3e7368, time=6.130127 :
+cvm[1234]: E FrameBufferManagerImpl:StackError::endUpdate() called more times than beginUpdate()
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=0:Updating open/closed menu counter
+cvm[1234]: I MenuCursorHandler:USER_SOFTKEY_PRESS:KeyPressed=Afficher notes et surlignements:User selected the menu item Afficher notes et surlignements
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.tabularview.gb:
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=1:Updating open/closed overlay counter
+cvm[1234]: I BaseCursorHandler:USER_SOFTKEY_PRESS:KeyPressed=aller à:User pressed aller à
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=0:Updating open/closed overlay counter
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/goto_position, msg=0x298c80 :
+webreader[1234]: I def:asyncCommandSentOnLast:Sent the delayed response, msg=0x298c80, time=127.489990 :
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/set_parameters, msg=0x3e7098 :
+webreader[1234]: I def:asyncCommandSentOnLast:Sent the delayed response, msg=0x3e7098, time=0.305908 :
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.pagecontentview.qb:
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/set_parameters, msg=0x298ad0 :
+webreader[1234]: I def:asyncCommandSentOnLast:Sent the delayed response, msg=0x298ad0, time=73.643066 :
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x298d70 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x298d70, time=47.170166 :
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Menu:User pressed Menu button
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=1:Updating open/closed menu counter
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x3e7188 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x3e7188, time=5.604980 :
+cvm[1234]: E FrameBufferManagerImpl:StackError::endUpdate() called more times than beginUpdate()
+cvm[1234]: I WindowManagerImpl:ModifyingOpenCounter:openCounter=0:Updating open/closed menu counter
+cvm[1234]: I MenuCursorHandler:USER_SOFTKEY_PRESS:KeyPressed=Ajouter un signet:User selected the menu item Ajouter un signet
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: E Reader:NO_CONTENT::
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x298d70 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x298d70, time=5.614014 :
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=100,newCursorIndex=99:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=Bookworm:
+cvm[1234]: I Reader:Information::Reader.loadState()
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=26,pages=5:Updated temperature and pages
+cvm[1234]: I Reader:Information::restoring to position: HTMLPosition: 241873
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/goto_position, msg=0x3e7098 :
+webreader[1234]: I def:asyncCommandSentOnLast:Sent the delayed response, msg=0x3e7098, time=185.883057 :
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.tabularview.gb:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I SupplementarInfoBox:QUICK_LOOKUP:asin=9dabdc03-04c7-4ba7-b361-e64526ddd7f5,word=:
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=99,newCursorIndex=98:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=Bookworm:
+cvm[1234]: I Reader:Information::Reader.loadState()
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=26,pages=5:Updated temperature and pages
+cvm[1234]: I Reader:Information::restoring to position: HTMLPosition: 241873
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/goto_position, msg=0x2989e0 :
+webreader[1234]: I def:asyncCommandSentOnLast:Sent the delayed response, msg=0x2989e0, time=91.979004 :
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.pagecontentview.qb:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/draw_page, msg=0x298e60 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x298e60, time=42.537842 :
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=98,newCursorIndex=97:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=Home:
+cvm[1234]: I WebServicesImpl:UploadAnnotations::first journal empty
+cvm[1234]: I Reader:SYNC LPR:position=241873:Send LPR to server
+cvm[1234]: I HTMLBookViewer:Information::HTMLBookViewer closeBook save last read position 241873
+webreader[1234]: I def:commandHandlerFunc:Received command: /command/close_uri, msg=0x3e7110 :
+webreader[1234]: I def:processCommandHandler:Response sent for this request, msg=0x3e7110, time=2.147217 :
+cvm[1234]: I HTMLBookViewer:Information::Request to close 9dabdc03-04c7-4ba7-b361-e64526ddd7f5 is processed successfully
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I GUIManager:HomeViewSwitch:view=HomeView:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+cvm[1234]: I HTMLJsonSidecarFile:Information::Delayed Write to sidecar file
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Home:User pressed Home button
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Home:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_NextPage:User pressed Right Side Turn Next Page button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_NextPage:User pressed Right Side Turn Next Page button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Home:User pressed Home button
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Home:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+cvm[1234]: I Search:INDEXING_THREAD_START::
+cvm[1234]: I Search:INDEXING_THREAD_FINISH:milliseconds=1:
+cvm[1234]: I Keyboard:Information::Keyboard open requested
+cvm[1234]: I Keyboard:Information::Keyboard opened
+cvm[1234]: I Keyboard:Information::Keyboard open requested
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I Keyboard:Information::Keyboard close requested
+cvm[1234]: I Keyboard:KEY_INFO:keysTyped=0,elapsedTime=1988:Keyboard closed
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Menu:User pressed Menu button
+cvm[1234]: I lipc:gip:prop=userstoreTotalSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I MenuCursorHandler:USER_SOFTKEY_PRESS:KeyPressed=Paramètres:User selected the menu item Paramètres
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Home:
+cvm[1234]: I GUIManager:HomeViewSwitch:view=SettingsView:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I SettingsView:WifiScanRequest:reason=scanForWifi() settings requested a scan:
+cvm[1234]: I lipc:ssp:prop=scan, source=com.lab126.wifid:Set string property
+wifid[1234]: I spectator:scan-start:t=84901.534158:
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.wifid,name=scanning,arg0=<None>,arg1=<None>:
+wifid[1234]: I spectator:scan-complete:t=84902.749352:
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.wifid,name=scanComplete,arg0=<None>,arg1=<None>:
+cvm[1234]: I SettingsView:Information::The Wi-Fi scanning task completed
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Right_NextPage:User pressed Right Side Turn Next Page button
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Menu:User pressed Menu button
+cvm[1234]: I lipc:gip:prop=userstoreTotalSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I MenuCursorHandler:USER_SOFTKEY_PRESS:KeyPressed=Acheter dans la boutique Kindle:User selected the menu item Acheter dans la boutique Kindle
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Store Booklet:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I StoreMetrics:Information::Metrics collection started for action: startBooklet
+cvm[1234]: I PageManager:Information::pageLoading
+cmd[1234]: I req::Got a connection request::~:
+cvm[1234]: I ConnectionService:EnsureConnectionCall:interface=:
+cvm[1234]: I lipc:ssp:prop=ensureConnection, source=com.lab126.cmd:Set string property
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.wifid,name=cmConnected,arg0=<None>,arg1=<None>:
+cvm[1234]: W WifiServiceImpl:UnhandledEvent:event=cmConnected:
+tmd[1234]: I recompute_hpet:none_eligible:next_retry={never} for recompute_retry_time() init,net=wifi,qsize=0:
+cvm[1234]: I ConnectionService:LipcEventArrived:source=com.lab126.cmd,name=connectionAvailable,arg0=<None>,arg1=wifi:
+cvm[1234]: I WirelessImpl:EnsureConnectionStatus:hasConnection=true,reason=ConnectionAvailable:Ensure connection succeeded
+cvm[1234]: I WirelessImpl:EnsureConnectionSkipped:currentConnection=wifi,lastConnection=wifi,currentTime=84909.05,lastConnectionTime=84908.93,inSuspendCounter=40,lastInSuspendCounter=40:
+cvm[1234]: E WindowManagerImpl:InvalidOpenCounter:openCounter=-1:Resetting the open counter
+wifid[1234]: I spectator:dns-ok:t=84909.231809:
+Fiveway wakeup
+powerd[1234]: I def:fiveway::Fiveway press and hold
+powerd[1234]: W def:unhandle:state=e_press_and_hold, evt=ACTIVE:Unhandled event e_press_and_hold in state ACTIVE
+cvm[1234]: I FetchXymlTask:STORE LOADED URL:wire=15954,bytes=31987,time=1617:Fetch url
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I PageManager:Information::pageLoaded
+cvm[1234]: I PageManager:Information::pageLoadedAndPainted
+cvm[1234]: I WirelessImpl:EnsureConnectionSkipped:currentConnection=wifi,lastConnection=wifi,currentTime=84911.4,lastConnectionTime=84908.93,inSuspendCounter=40,lastInSuspendCounter=40:
+cvm[1234]: I Image:STORE LOADED URL:wire=1518,bytes=1518,time=304:Fetch Image
+cvm[1234]: I StoreMetrics:Information::Request complete. Metrics dump:[ac:sb.1,sn:3,c:storefront,tr:WIFI,i:1/0/1,w:70;rs:42,rr:1635,ce:1659,xp:2029,pp:2128,pc:2552,il:2859]
+cvm[1234]: I ImageCleanupTask:Information::Running xyml image cleanup task...
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I StoreMetrics:Information::Metrics collection started for action: back
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=99,newCursorIndex=98:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Store Booklet,to=Home:
+cvm[1234]: I StoreBooklet:Information::Uploading 1 StoreMetric(s) on store shutdown
+cvm[1234]: I ConnectionService:EnsureConnectionCall:interface=:
+cvm[1234]: I lipc:ssp:prop=ensureConnection, source=com.lab126.cmd:Set string property
+tmd[1234]: I recompute_hpet:none_eligible:next_retry={never} for recompute_retry_time() init,net=wifi,qsize=0:
+cmd[1234]: I req::Got a connection request::~:
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.wifid,name=cmConnected,arg0=<None>,arg1=<None>:
+cvm[1234]: W WifiServiceImpl:UnhandledEvent:event=cmConnected:
+cvm[1234]: I ConnectionService:LipcEventArrived:source=com.lab126.cmd,name=connectionAvailable,arg0=<None>,arg1=wifi:
+cvm[1234]: I WirelessImpl:EnsureConnectionStatus:hasConnection=true,reason=ConnectionAvailable:Ensure connection succeeded
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I GUIManager:HomeViewSwitch:view=SettingsView:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I SettingsView:Information::There was a scan recently so skip scanning for Wi-Fi
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=98,newCursorIndex=97:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Home:
+cvm[1234]: I GUIManager:HomeViewSwitch:view=HomeView:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Back:User pressed Back button
+cvm[1234]: I HistoryManagerImpl:History cursor updated:action=set,oldCursorIndex=97,newCursorIndex=96:
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=Bookworm:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: I Reader:Information::Reader.loadState()
+cvm[1234]: I WindowManagerImpl:PageTransitionBehavior:USE_GL16=true:
+cvm[1234]: I WindowManagerImpl:NewTemperatureAndPages:temperature=26,pages=5:Updated temperature and pages
+cvm[1234]: I Reader:BOOK INFO:book asin=3258236f-e9de-416b-bb6f-ed462cd2b1d0,file size=1581789,file last mod date=2014-12-04 06.56.00 -0719,content type=ebook,length=MobiPosition_ 758492,access=2015-08-10 06.35.46 -0719,last read position=MobiPosition_ 5158,isEncrypted=false,isSample=false,isNew=false,isTTSMetdataPresent=false,isTTSMetadataAllowed=true,fileExtn=mobi:
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Reader:Information::Reader.setUpGUIForBook()
+cvm[1234]: I lipc:gip:prop=userstoreFreeSpace, source=com.lab126.volumd:Get int property
+cvm[1234]: I Reader:Information::restoring to position: MobiPosition: 5158
+cvm[1234]: I ReaderGUI:SWITCH VIEW:name=com.amazon.ebook.booklet.reader.gui.view.pagecontentview.qb:
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I FrameworkKeyEventDispatcher:USER_HARDKEY_PRESS:KeyPressed=Home:User pressed Home button
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Bookworm,to=Home:
+cvm[1234]: I WebServicesImpl:UploadAnnotations::first journal empty
+cvm[1234]: I Reader:SYNC LPR:position=5158:Send LPR to server
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+powerd[1234]: I def:pbpress:time=1439214961.710:Power button pressed
+powerd[1234]: I def:gss:reason=pb:Going to screen saver
+powerd[1234]: I def:statech:prev=ACTIVE, next=SCREEN SAVER:State change: ACTIVE -> SCREEN SAVER
+powerd[1234]: I def:acc::Turn acc port off
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.powerd,name=goingToScreenSaver,arg0=2,arg1=<None>:
+cvm[1234]: I PowerImpl:Information::handlePowerStateChangeEvent 2 2
+cvm[1234]: I ScreenSaverBooklet:SwitchBooklet::last booklet is com.amazon.ebook.booklet.home.v@2fd3a1af
+powerd[1234]: I lipc:evts:name=goingToScreenSaver, origin=com.lab126.powerd, fparam=2:Event sent
+cvm[1234]: I BookletManager:SwitchingBooklets:from=Home,to=ScreenSaverBooklet:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+powerd[1234]: I def:pbpress:time=1439214966.770:Power button pressed
+powerd[1234]: I lipc:evts:name=outOfScreenSaver, origin=com.lab126.powerd, fparam=1:Event sent
+powerd[1234]: I def:statech:prev=SCREEN SAVER, next=ACTIVE:State change: SCREEN SAVER -> ACTIVE
+powerd[1234]: I def:acc::Turn acc port on
+powerd[1234]: E def:usbfs::Failed to open sys entry for USB FS ONLINE
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.powerd,name=outOfScreenSaver,arg0=1,arg1=<None>:
+cvm[1234]: I PowerImpl:Information::handlePowerStateChangeEvent 3 1
+cvm[1234]: I ScreenSaverBooklet:SSB_TRACE_USB_EXPORT:delayUSBExport=false:Password disabled
+cvm[1234]: I ScreenSaverBooklet:IncrementSSImage::Incrementing the screen saver image index
+cvm[1234]: I ScreenSaverBooklet:SwitchingToLastBooklet:lastBooklet=Home:Switching to last booklet
+cvm[1234]: I BookletManager:SwitchingBooklets:from=ScreenSaverBooklet,to=Home:
+cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
+cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
+cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+
