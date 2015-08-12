@@ -2,27 +2,25 @@
             DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
                    Version 2, December 2004
 
-Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
+    Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
 
-Everyone is permitted to copy and distribute verbatim or modified
-copies of this license document, and changing it is allowed as long
-as the name is changed.
+    Everyone is permitted to copy and distribute verbatim or modified
+    copies of this license document, and changing it is allowed as long
+    as the name is changed.
 
            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-  TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
 
- 0. You just DO WHAT THE FUCK YOU WANT TO.
+    0. You just DO WHAT THE FUCK YOU WANT TO.
 
-This is a basis for filters. See filter_cvm as an example.
+    This is a basis for filters. See filter_cvm as an example.
 */
 
 #define _GNU_SOURCE
 #include <stdio.h>
-#include <stdbool.h>
 #include <stdlib.h>
-#include <stdint.h>
-#include <inttypes.h>
 #include <string.h>
+#include <stdbool.h>
 #include <regex.h>
 #include <sys/param.h>
 
@@ -39,10 +37,13 @@ This is a basis for filters. See filter_cvm as an example.
 #define STATIC_MAXGETLINE
 #endif
 
-bool check_regexp(const char* line[STATIC_MAXGETLINE], const char* regexp[STATIC_MAXGETLINE]);
-char* extract_substring(const char** src, char** dst, const char key_start, const char key_stop);
+bool check_regexp(const char* line[STATIC_MAXGETLINE],
+                  const char* regexp[STATIC_MAXGETLINE]);
+char* extract_substring(const char** src, char** dst, const char key_start,
+                        const char key_stop);
 
-bool check_regexp(const char* line[STATIC_MAXGETLINE], const char* filter[STATIC_MAXGETLINE]) {
+bool check_regexp(const char* line[STATIC_MAXGETLINE],
+                  const char* filter[STATIC_MAXGETLINE]) {
     // Big waste of time, don't forget checkMAGIC before !!
     int reg_result;
     regex_t regex;
@@ -56,19 +57,28 @@ bool check_regexp(const char* line[STATIC_MAXGETLINE], const char* filter[STATIC
     return 0 == reg_result;
 }
 
-char* extract_substring(const char** src, char** dst, const char key_start, const char key_stop) {
+char* extract_substring(const char** src, char** dst, const char key_start,
+                        const char key_stop) {
     char* cursor_start;
-    char* cursor_end = NULL;
-    cursor_start = strchr(*src, key_start);
-    if ( NULL != cursor_start ) {
-        ++cursor_start;
-        cursor_end = strchr(cursor_start, key_stop);
-        if ( NULL != cursor_end ) {
-            size_t cursor_length;
-            cursor_length = cursor_end - cursor_start;
-            ** dst = '\0';
-            strncat(*dst, cursor_start, MIN(cursor_length, MAX_GETLINE));
+    char* cursor_end;
+    char* result = NULL;
+    if ( NULL != *src) {
+        cursor_start = strchr(*src, key_start);
+        if ( NULL != cursor_start ) {
+            ++cursor_start;
+            cursor_end = strchr(cursor_start, key_stop);
+            if ( NULL != cursor_end ) {
+                size_t cursor_length; // get the size of the inter-key word.
+                cursor_length = cursor_end - cursor_start;
+                (void)printf("\nstart:[%s] end:[%s] size:[%zu]\n",
+                cursor_start, cursor_end, cursor_length);
+                //~ ** dst = '\0';  // emptying the destination string before filling it.
+                //~ strncat(*dst, cursor_start, MIN(cursor_length, MAX_GETLINE));
+                (void)asprintf((char** restrict) dst, "%s", cursor_start);
+                *(*dst + cursor_length) = '\0';
+                result = cursor_end;
+            }
         }
     }
-    return cursor_end;
+    return result;
 }

@@ -39,7 +39,7 @@ splint:
 	splint -compdestroy +posixstrictlib -unqualifiedtrans -compdef -globs -formatcode $(TGT).c
 
 test: build
-	valgrind -v --track-origins=yes --leak-check=full --error-exitcode=1 ./$(TGT) > /dev/null 2>&1
+	valgrind -v --track-origins=yes --leak-check=full --error-exitcode=1 ./$(TGT) < Docs/kindle.log > /dev/null 2>&1
 	make -C test test TGT=test_soc_stat
 	make -C test test TGT=test_iface_stat
 	make -C test test TGT=test_partition_stat
