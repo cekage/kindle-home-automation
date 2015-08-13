@@ -43,14 +43,14 @@
 static bool checkMAGIC_CVM(const char** line);
 static bool check_MAGIC_SupplementarInfoBox(const char** line);
 static bool check_regexp_SupplementarInfoBox(const char** line);
-static void extractdata_SupplementarInfoBox(const char** line, char** asin,
-        char** word);
+static void extractdata_SupplementarInfoBox(const char** line,
+        char** asin, char** word);
 void process_SupplementarInfoBox(const char** line);
 
 static bool check_MAGIC_BookletManager(const char** line);
 static bool check_regexp_BookletManager(const char** line);
-static void extractdata_BookletManager(const char** line, char** asin,
-                                       char** word);
+static void extractdata_BookletManager(const char** line,
+                                       char** asin, char** word);
 void process_BookletManager(const char** line);
 
 
