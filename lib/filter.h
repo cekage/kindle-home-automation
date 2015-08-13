@@ -17,6 +17,7 @@
 */
 
 #define _GNU_SOURCE
+#include <inttypes.h>  // for PRIx64 stuff
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,7 +25,6 @@
 #include <stdbool.h>
 #include <regex.h>
 #include <sys/param.h>
-
 #ifndef FILTER_H
 #define FILTER_H
 #endif
@@ -35,6 +35,8 @@
 bool check_regexp(const char** line, const char** filter);
 char* extract_substring(const char** src, char** dst,
                         const char key_start, const char key_stop);
+bool check_MAGIC_32_64(const char** line,
+                       const uint32_t magic32, const uint64_t magic64);
 
 bool check_regexp(const char** line, const char** filter) {
     // Big waste of time, don't forget checkMAGIC before !!
@@ -48,6 +50,20 @@ bool check_regexp(const char** line, const char** filter) {
     reg_result = regexec(&regex, *line, 0, NULL, 0);
     regfree(&regex);
     return 0 == reg_result;
+}
+
+bool check_MAGIC_32_64(const char** line,
+                       const uint32_t magic32, const uint64_t magic64) {
+    bool result = false;
+    if (*((uint32_t*) *line) == magic32) {
+        char* cursor;
+        // MAGIC is 4 chars after the colon "prog.*[pid]: . MAGIC64?.*"
+        cursor = strchr(*line, ':') + 4;
+        //~ (void)printf("\OKx %"PRIx64" vs %"PRIx64" ",
+                     //~ (uint64_t) *line, magic64 );
+        result = (magic64 == *((uint64_t*) cursor));
+    }
+    return result;
 }
 
 char* extract_substring(const char** src, char** dst,

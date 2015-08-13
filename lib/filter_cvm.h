@@ -40,45 +40,23 @@
 // in string : 'BookletM'
 #define MAGIC_BookletManager 0x4d74656c6b6f6f42
 
-static bool checkMAGIC_CVM(const char** line);
-static bool check_MAGIC_SupplementarInfoBox(const char** line);
 static bool check_regexp_SupplementarInfoBox(const char** line);
 static void extractdata_SupplementarInfoBox(const char** line,
         char** asin, char** word);
 void process_SupplementarInfoBox(const char** line);
 
-static bool check_MAGIC_BookletManager(const char** line);
 static bool check_regexp_BookletManager(const char** line);
 static void extractdata_BookletManager(const char** line,
                                        char** asin, char** word);
 void process_BookletManager(const char** line);
 
-
-static bool checkMAGIC_CVM(const char** line) {
-    //~ (void)printf("\OKx %"PRIx32" vs %"PRIx32" ", (uint32_t) *log_prefix, (uint32_t)MAGIC_CVM );
-    return *((uint32_t*) *line) == (uint32_t) MAGIC_CVM;
-}
-
 /* *****************************   SupplementarInfoBox    ******************************** */
 
-static bool check_MAGIC_SupplementarInfoBox(const char** line) {
-    bool result = false;          // line is supposed to first not be MAGIC
-    if  (checkMAGIC_CVM(line)) {  // Ensure line starts with 'cvm['
-        char* cursor;              // future pointer to the first cursor
-        cursor = strchr(*line, ':');
-        // No need to check cursor is NULL cause if we have a cvm[ we have at least one cursor
-        // It's possible syslog fails at sending log line but is it our problem ?
-        cursor += 4;                      // MAGIC is 4 chars after ':' cvm[1234]: I S'
-        //~ (void)printf("\OKx %"PRIx64" vs %"PRIx64" ", (uint64_t) *linemagic,
-        //~ (uint64_t)MAGIC_SupplementarInfoBox );
-        result = (MAGIC_SupplementarInfoBox == *((uint64_t*) cursor));
-    }
-    return result;
-}
-
 static bool check_regexp_SupplementarInfoBox(const char** line) {
-    // test is string contains SupplementarInfoBox one asin and one word with both
-    // have at least one character length
+    /*
+        test is string contains SupplementarInfoBox one asin and one word with both
+        have at least one character length
+    */
     const char* regexp_SupplementarInfoBox =
         "SupplementarInfoBox:QUICK_LOOKUP:asin=.+,word=.+:$";
     return check_regexp(line, &regexp_SupplementarInfoBox);
@@ -87,8 +65,10 @@ static bool check_regexp_SupplementarInfoBox(const char** line) {
 static void extractdata_SupplementarInfoBox(const char** line,
         char** asin, char** word) {
     char* lastcursor = (char*) *line;  // lastcursor point to first char of line
-    // According to doc, and relying on RegExp, we first extract asin starting from
-    // the beginnig ont line
+    /*
+        According to doc, and relying on RegExp, we first extract asin starting from
+        the beginnig ont line
+    */
     lastcursor = extract_substring((const char**)&lastcursor, asin, '=', ',');
     // and then extract room from the last comma.
     (void)extract_substring((const char**) &lastcursor, word, '=', ':');
@@ -96,7 +76,7 @@ static void extractdata_SupplementarInfoBox(const char** line,
 }
 
 void process_SupplementarInfoBox(const char** line) {
-    if (strlen(*line) > 4 && check_MAGIC_SupplementarInfoBox(line)) {
+    if (strlen(*line) > 4 && check_MAGIC_32_64(line,MAGIC_CVM,MAGIC_SupplementarInfoBox)) {
         if (check_regexp_SupplementarInfoBox(line)) {
             char* room;
             char* asin;
@@ -116,21 +96,6 @@ void process_SupplementarInfoBox(const char** line) {
 }
 
 /* *****************************   BookletManager    ******************************** */
-
-static bool check_MAGIC_BookletManager(const char** line) {
-    bool result = false;          // line is supposed to first not be MAGIC
-    if  (checkMAGIC_CVM(line)) {  // Ensure line starts with 'cvm['
-        char* cursor;              // future pointer to the first cursor
-        cursor = strchr(*line, ':');
-        // No need to check cursor is NULL cause if we have a cvm[ we have at least one cursor
-        // It's possible syslog fails at sending log line but is it our problem ?
-        cursor += 4;                      // MAGIC is 4 chars after ':' cvm[1234]: I S'
-        //~ (void)printf("\OKx %"PRIx64" vs %"PRIx64" ", (uint64_t) *linemagic,
-        //~ (uint64_t)MAGIC_SupplementarInfoBox );
-        result = (MAGIC_BookletManager == *((uint64_t*) cursor)); // updating result
-    }
-    return result;
-}
 
 static bool check_regexp_BookletManager(const char** line) {
     // test is string contains SupplementarInfoBox one asin and one word with both
@@ -152,7 +117,8 @@ static void extractdata_BookletManager(const char** line,
 }
 
 void process_BookletManager(const char** line) {
-    if (strlen(*line) > 47 && check_MAGIC_BookletManager(line)) {
+    //~ if (strlen(*line) > 47 && check_MAGIC_BookletManager(line)) {
+    if (strlen(*line) > 47 && check_MAGIC_32_64(line,MAGIC_CVM,MAGIC_BookletManager)) {
         if (check_regexp_BookletManager(line)) {
             char* from;
             char* to;
