@@ -65,7 +65,7 @@ void get_ip(const char* host, char** dest) {
 //~ return query;
 //~ }
 static void print_http_response(const int socket) {
-    const int MAXCOUNT = 2048;
+    const size_t MAXCOUNT = 2048;
     char* received_data = calloc(sizeof(char), MAXCOUNT);
     if (received_data != NULL) {
         ssize_t received_count;
