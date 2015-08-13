@@ -185,8 +185,9 @@ TEST return_substring_simple() {
 }
 
 
-//~ Verify trivial usage
-//~ Wanted result : ptr to the first end after to
+/*  Verify trivial usage
+    Wanted result : ptr to the first end after to
+*/
 TEST return_substring_missing() {
     const char* abcazerty = "abc+azerty=1";
     char* azerty = NULL;
