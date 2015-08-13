@@ -6,7 +6,7 @@
 
 
 TEST simple_test() {
-    const char cuisine[]="CUISINE";
+    const char cuisine[]="?toggle=CUISINE";
     do_http_request(cuisine);
     PASS();
 }

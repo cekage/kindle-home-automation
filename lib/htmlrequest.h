@@ -32,8 +32,8 @@
 
 void get_ip(const char* host, char** dest);
 //~ static char* build_get_query(const char* host, const char* page);
-void do_http_request(const char* room);
-void send_and_receive_data(const int sock, const char* room);
+void do_http_request(const char* http_request);
+void send_and_receive_data(const int sock, const char* http_request);
 
 #define SERVER "mbp"
 #define PORT 8080
@@ -50,8 +50,6 @@ void get_ip(const char* host, char** dest) {
             if (inet_ntop(AF_INET, (void*)hent->h_addr_list[0], *dest,
                           (socklen_t) iplen) == NULL) {
                 perror("Can't resolve host");
-            } else {
-                perror("Can't connect");
             }
         } else {
             perror("get_ip() Can't gethostbyname()");
@@ -83,32 +81,28 @@ static void print_http_response(const int socket) {
         perror("Error receiving data");
     }
 }
-void send_and_receive_data(const int sock, const char* room) {
-    char* page;
-    if (-1 != asprintf(&page, "?toggle=%s", room)) {
-        char* get;
-        //~ get = build_get_query(SERVER, page);
-        const char* tpl = "GET /%s HTTP/1.0\r\nHost: %s\r\nUser-Agent: %s\r\n\r\n";
-        if (-1 != asprintf(&get, tpl, page, SERVER, USERAGENT)) {
-            //Send the query to the server
-            size_t sent;
-            sent = 0;
-            while (sent < strlen(get)) {
-                static ssize_t tmpres;
-                tmpres = send(sock, get + sent, strlen(get) - sent, 0);
-                if ( -1 == tmpres) {
-                    perror("Can't send query");
-                }
-                sent += tmpres;
+void send_and_receive_data(const int sock, const char* http_request) {
+    char* get;
+    //~ get = build_get_query(SERVER, page);
+    const char* tpl = "GET /%s HTTP/1.0\r\nHost: %s\r\nUser-Agent: %s\r\n\r\n";
+    if (-1 != asprintf(&get, tpl, http_request, SERVER, USERAGENT)) {
+        //Send the query to the server
+        size_t sent;
+        sent = 0;
+        while (sent < strlen(get)) {
+            static ssize_t tmpres;
+            tmpres = send(sock, get + sent, strlen(get) - sent, 0);
+            if ( -1 == tmpres) {
+                perror("Can't send query");
             }
-            free(get);
-            print_http_response(sock);
+            sent += tmpres;
         }
-        free(page);
+        free(get);
+        print_http_response(sock);
     }
 }
-void do_http_request(const char* room) {
-    //~ (void)printf("[******  do_http_request(%s)  *******]",room);
+void do_http_request(const char* http_request) {
+    //~ (void)printf("[******  do_http_request(%s)  *******]",http_request);
     int sock;
     sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (-1 != sock) {
@@ -124,7 +118,9 @@ void do_http_request(const char* room) {
                 remote.sin_port = htons(PORT);
                 if (connect(sock, (struct sockaddr*)&remote,
                             (socklen_t) sizeof(struct sockaddr)) == 0) {
-                    send_and_receive_data(sock, room);
+                    send_and_receive_data(sock, http_request);
+                } else {
+                    perror("Can't connect");
                 }
             } else {
                 perror("do_http_request() Can't inet_pton");

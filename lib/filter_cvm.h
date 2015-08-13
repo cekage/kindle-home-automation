@@ -21,7 +21,9 @@
 */
 
 #define _GNU_SOURCE
+
 #include <stdio.h>
+#include <inttypes.h>  // pro PRIx64 stuff
 
 #ifndef FILTER_H
 #include "filter.h"
@@ -35,6 +37,9 @@
 // in string : 'Suppleme'
 #define MAGIC_SupplementarInfoBox 0x656d656c70707553
 
+// in string : 'BookletM'
+#define MAGIC_BookletManager 0x4d74656c6b6f6f42
+
 static bool checkMAGIC_CVM(const char** line);
 static bool check_MAGIC_SupplementarInfoBox(const char** line);
 static bool check_regexp_SupplementarInfoBox(const char** line);
@@ -42,11 +47,20 @@ static void extractdata_SupplementarInfoBox(const char** line, char** asin,
         char** word);
 void process_SupplementarInfoBox(const char** line);
 
+static bool check_MAGIC_BookletManager(const char** line);
+static bool check_regexp_BookletManager(const char** line);
+static void extractdata_BookletManager(const char** line, char** asin,
+                                       char** word);
+void process_BookletManager(const char** line);
+
+
 static bool checkMAGIC_CVM(const char** line) {
     //~ (void)printf("\OKx %"PRIx32" vs %"PRIx32" ", (uint32_t) *log_prefix, (uint32_t)MAGIC_CVM );
     uint32_t* log_prefix = (uint32_t*) *line;
     return *log_prefix == MAGIC_CVM;
 }
+
+/* *****************************   SupplementarInfoBox    ******************************** */
 
 static bool check_MAGIC_SupplementarInfoBox(const char** line) {
     bool result = false;          // line is supposed to first not be MAGIC
@@ -65,6 +79,8 @@ static bool check_MAGIC_SupplementarInfoBox(const char** line) {
     return result;
 }
 
+
+
 static bool check_regexp_SupplementarInfoBox(const char** line) {
     // test is string contains SupplementarInfoBox one asin and one word with both
     // have at least one character length
@@ -74,7 +90,7 @@ static bool check_regexp_SupplementarInfoBox(const char** line) {
 }
 
 static void extractdata_SupplementarInfoBox(const char** line,
-            char** asin, char** word) {
+        char** asin, char** word) {
     char* lastcursor = (char*) *line;  // lastcursor point to first char of line
     // According to doc, and relying on RegExp, we first extract asin starting from
     // the beginnig ont line
@@ -90,13 +106,73 @@ void process_SupplementarInfoBox(const char** line) {
             char* room;
             char* asin;
             extractdata_SupplementarInfoBox(line, (char**) &asin, (char**) &room);
-            do_http_request(room);
+            char* url_request;
+            if (-1 != asprintf(&url_request, "?toggle=%s", room)) {
+                (void)printf("url_request=%s",url_request);
+                do_http_request(url_request);
+                free(url_request);
+            } else {
+                perror("process_SupplementarInfoBox() can't build url_request");
+            }
             free(room);
             free(asin);
         }
     }
 }
 
+/* *****************************   BookletManager    ******************************** */
+
+static bool check_MAGIC_BookletManager(const char** line) {
+    bool result = false;          // line is supposed to first not be MAGIC
+    if  (checkMAGIC_CVM(line)) {  // Ensure line starts with 'cvm['
+        char* colon;              // future pointer to the first colon
+        uint64_t* linemagic;             // future pointer to the MAGIC
+        colon = strchr(*line, ':');
+        // No need to check colon is NULL cause if we have a cvm[ we have at least one colon
+        // It's possible syslog fails at sending log line but is it our problem ?
+        colon += 4;                      // MAGIC is 4 chars after ':' cvm[1234]: I S'
+        linemagic = (uint64_t*) colon;   // pointing to colon
+        //~ (void)printf("\nOKx %"PRIx64" vs %"PRIx64" for %s", (uint64_t) *linemagic, (uint64_t)MAGIC_BookletManager,colon );
+        result = (MAGIC_BookletManager == *linemagic); // updating result
+    }
+    return result;
+}
+
+static bool check_regexp_BookletManager(const char** line) {
+    // test is string contains SupplementarInfoBox one asin and one word with both
+    // have at least one character length
+    const char* regexp_BookletManager =
+        "BookletManager:SwitchingBooklets:from=.+,to=.+:$";
+    return check_regexp(line, &regexp_BookletManager);
+}
+
+static void extractdata_BookletManager(const char** line,
+                                       char** first, char** second) {
+    char* lastcursor = (char*) *line;  // lastcursor point to first char of line
+    // According to doc, and relying on RegExp, we first extract asin starting from
+    // the beginnig ont line
+    lastcursor = extract_substring((const char**)&lastcursor, first, '=', ',');
+    // and then extract room from the last comma.
+    (void)extract_substring((const char**) &lastcursor, second, '=', ':');
+    // Now asin & word contains their value.
+}
+
+void process_BookletManager(const char** line) {
+    if (strlen(*line) > 47 && check_MAGIC_BookletManager(line)) {
+        if (check_regexp_BookletManager(line)) {
+            char* from;
+            char* to;
+            extractdata_BookletManager(line, (char**) &from, (char**) &to);
+            //do_http_request(room);
+            (void)printf("\nBookletManager user went to %s from %s\n", from, to);
+            free(from);
+            free(to);
+        }
+    }
+}
+
+
+/* *****************************   Garbage  ¯\_(ツ)_/¯   ******************************** */
 
 /*
     //~ Old version with array instead of pointer.

@@ -55,7 +55,6 @@ TEST substring_simple_array() {
     char** myptr = (char**) &azerty;
     (void)extract_substring((const char**)&abcazerty, (char**) &myptr, '+', '=');
     cmp = strcmp((char*) myptr, "azerty");
-    (void)printf("\nTEST : azerty = %s : cmp = %d\n", (char*) myptr, cmp);
     free(myptr);
     ASSERT_EQ(0, cmp);
     PASS();
@@ -63,7 +62,7 @@ TEST substring_simple_array() {
 
 
 /*
-    Verify trivial usage, with inverted from/to
+    Verify trivial usage, with inverted key_end/key_start
     Wanted result : untouched
 */
 TEST substring_inverted() {
@@ -79,7 +78,7 @@ TEST substring_inverted() {
 }
 
 /*
-    Verify trivial usage, with "from" absent of the searched string
+    Verify trivial usage, with key_start absent of the searched string
     Wanted result : untouched
 */
 TEST substring_missing_start() {
@@ -95,7 +94,7 @@ TEST substring_missing_start() {
 }
 
 /*
-    Verify trivial usage, with "to" absent of the searched string
+    Verify trivial usage, with key_end absent of the searched string
     Wanted result : untouched
 */
 TEST substring_missing_end() {
@@ -144,7 +143,7 @@ TEST substring_string_empty() {
 }
 
 /*
-    Verify trivial usage, with from and to contiguous
+    Verify trivial usage, with key_start and key_end contiguous
     Wanted result : empty string
 */
 TEST substring_string_contiguous() {
@@ -171,14 +170,14 @@ SUITE(suite_substring) {
 
 /*
     Verify trivial usage
-    Wanted result : ptr to the first end after to
+    Wanted result : ptr to the first key_end after key_start
 */
 TEST return_substring_simple() {
-    const char* abcazerty = "ab=c+azerty=1";
+    const char* abcazerty = "ab=c+azerty=1=4";
     int cmp;
     char* azerty = NULL;
     char* result = extract_substring((const char**)&abcazerty, &azerty, '+', '=');
-    cmp = strcmp(result, "=1");
+    cmp = strcmp(result, "=1=4");
     free(azerty);
     ASSERT_EQ(0, cmp);
     PASS();
