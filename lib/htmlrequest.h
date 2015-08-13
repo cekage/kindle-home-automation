@@ -30,6 +30,10 @@
 #include <string.h>
 #include <unistd.h>
 
+#ifndef HTMLREQUEST_H
+#define HTMLREQUEST_H
+#endif
+
 void get_ip(const char* host, char** dest);
 //~ static char* build_get_query(const char* host, const char* page);
 void do_http_request(const char* http_request);
