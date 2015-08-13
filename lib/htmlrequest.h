@@ -54,7 +54,7 @@ void get_ip(const char* host, char** dest) {
                 perror("Can't connect");
             }
         } else {
-            perror("get_ip() Can't gethostbyname()  ");
+            perror("get_ip() Can't gethostbyname()");
         }
     } else {
         perror("get_ip() Can't calloc");
@@ -127,8 +127,7 @@ void do_http_request(const char* room) {
                     send_and_receive_data(sock, room);
                 }
             } else {
-                    perror("do_http_request() Can't inet_pton");
-
+                perror("do_http_request() Can't inet_pton");
             }
         }
     }
