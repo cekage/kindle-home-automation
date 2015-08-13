@@ -37,6 +37,9 @@ char* extract_substring(const char** src, char** dst,
                         const char key_start, const char key_stop);
 bool check_MAGIC_32_64(const char** line,
                        const uint32_t magic32, const uint64_t magic64);
+                       static void extractdata_only_two_keys(const char** line,
+        char** key1, char** key2);
+
 
 bool check_regexp(const char** line, const char** filter) {
     // Big waste of time, don't forget checkMAGIC before !!
@@ -50,6 +53,19 @@ bool check_regexp(const char** line, const char** filter) {
     reg_result = regexec(&regex, *line, 0, NULL, 0);
     regfree(&regex);
     return 0 == reg_result;
+}
+
+static void extractdata_only_two_keys(const char** line,
+        char** key1, char** key2) {
+    char* lastcursor = (char*) *line;  // lastcursor point to first char of line
+    /*
+        According to doc, and relying on RegExp, we first extract key1 starting from
+        the beginnig on the line
+    */
+    lastcursor = extract_substring((const char**)&lastcursor, key1, '=', ',');
+    // and then extract key2 from the last comma.
+    (void)extract_substring((const char**) &lastcursor, key2, '=', ':');
+    // Now key1 & key2 contains their value.
 }
 
 bool check_MAGIC_32_64(const char** line,

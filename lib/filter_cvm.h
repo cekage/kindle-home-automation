@@ -40,28 +40,14 @@
 // in string : 'BookletM'
 #define MAGIC_BookletManager 0x4d74656c6b6f6f42
 
-static void extractdata_SupplementarInfoBox(const char** line,
-        char** asin, char** word);
+
 void process_SupplementarInfoBox(const char** line);
 
-static void extractdata_BookletManager(const char** line,
-                                       char** asin, char** word);
 void process_BookletManager(const char** line);
 
-/* *****************************   SupplementarInfoBox    ******************************** */
 
-static void extractdata_SupplementarInfoBox(const char** line,
-        char** asin, char** word) {
-    char* lastcursor = (char*) *line;  // lastcursor point to first char of line
-    /*
-        According to doc, and relying on RegExp, we first extract asin starting from
-        the beginnig ont line
-    */
-    lastcursor = extract_substring((const char**)&lastcursor, asin, '=', ',');
-    // and then extract room from the last comma.
-    (void)extract_substring((const char**) &lastcursor, word, '=', ':');
-    // Now asin & word contains their value.
-}
+
+/* *****************************   SupplementarInfoBox    ******************************** */
 
 void process_SupplementarInfoBox(const char** line) {
     if (strlen(*line) > 4 &&
@@ -72,7 +58,7 @@ void process_SupplementarInfoBox(const char** line) {
             char* room;
             char* asin;
             char* url_request = NULL;
-            extractdata_SupplementarInfoBox(line, (char**) &asin, (char**) &room);
+            extractdata_only_two_keys(line, &asin, &room);
             if (-1 != asprintf(&url_request, "?toggle=%s", room)) {
                 //~ (void)printf("url_request=%s",url_request);
                 do_http_request(url_request);
@@ -88,17 +74,6 @@ void process_SupplementarInfoBox(const char** line) {
 
 /* *****************************   BookletManager    ******************************** */
 
-static void extractdata_BookletManager(const char** line,
-                                       char** first, char** second) {
-    char* lastcursor = (char*) *line;  // lastcursor point to first char of line
-    // According to doc, and relying on RegExp, we first extract asin starting from
-    // the beginnig ont line
-    lastcursor = extract_substring((const char**)&lastcursor, first, '=', ',');
-    // and then extract room from the last comma.
-    (void)extract_substring((const char**) &lastcursor, second, '=', ':');
-    // Now asin & word contains their value.
-}
-
 void process_BookletManager(const char** line) {
     if (strlen(*line) > 47 &&
             check_MAGIC_32_64(line, MAGIC_CVM, MAGIC_BookletManager)) {
@@ -107,7 +82,7 @@ void process_BookletManager(const char** line) {
         if (check_regexp(line, &regexp_BookletManager)) {
             char* from;
             char* to;
-            extractdata_BookletManager(line, (char**) &from, (char**) &to);
+            extractdata_only_two_keys(line, &from, &to);
             (void)printf("BookletManager user went to %s from %s\n", from, to);
             free(from);
             free(to);
