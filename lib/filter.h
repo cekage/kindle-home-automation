@@ -59,24 +59,29 @@ bool check_regexp(const char* line[STATIC_MAXGETLINE],
 
 char* extract_substring(const char** src, char** dst, const char key_start,
                         const char key_stop) {
-    char* cursor_start;
-    char* cursor_end;
     char* result = NULL;
     if ( NULL != *src) {
+        char* cursor_start;
         cursor_start = strchr(*src, key_start);
         if ( NULL != cursor_start ) {
+            char* cursor_end;
             ++cursor_start;
             cursor_end = strchr(cursor_start, key_stop);
             if ( NULL != cursor_end ) {
+                int asprint_ret;
                 size_t cursor_length; // get the size of the inter-key word.
                 cursor_length = cursor_end - cursor_start;
-                (void)printf("\nstart:[%s] end:[%s] size:[%zu]\n",
-                cursor_start, cursor_end, cursor_length);
+                //~ (void)printf("\nstart:[%s] end:[%s] size:[%zu]\n",
+                             //~ cursor_start, cursor_end, cursor_length);
                 //~ ** dst = '\0';  // emptying the destination string before filling it.
                 //~ strncat(*dst, cursor_start, MIN(cursor_length, MAX_GETLINE));
-                (void)asprintf((char** restrict) dst, "%s", cursor_start);
-                *(*dst + cursor_length) = '\0';
-                result = cursor_end;
+                asprint_ret = asprintf((char** restrict) dst, "%s", cursor_start);
+                if (-1 != asprint_ret) {
+                    *(*dst + cursor_length) = '\0';
+                    // asprint + cutting dst after cursor_length bytes is more
+                    // efficient on the kindle than calloc+strncat  ¯\_(ツ)_/¯
+                    result = cursor_end;
+                }
             }
         }
     }
