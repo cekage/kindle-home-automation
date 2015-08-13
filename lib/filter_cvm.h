@@ -35,23 +35,20 @@
 // in string : 'Suppleme'
 #define MAGIC_SupplementarInfoBox 0x656d656c70707553
 
-static bool checkMAGIC_CVM(const char* line[STATIC_MAXGETLINE]);
-static bool check_MAGIC_SupplementarInfoBox(const char*
-        line[STATIC_MAXGETLINE]);
-static bool check_regexp_SupplementarInfoBox(const char*
-        line[STATIC_MAXGETLINE]);
+static bool checkMAGIC_CVM(const char** line);
+static bool check_MAGIC_SupplementarInfoBox(const char** line);
+static bool check_regexp_SupplementarInfoBox(const char** line);
 static void extractdata_SupplementarInfoBox(const char** line, char** asin,
         char** word);
-void process_SupplementarInfoBox(const char* line[STATIC_MAXGETLINE]);
+void process_SupplementarInfoBox(const char** line);
 
-static bool checkMAGIC_CVM(const char* line[STATIC_MAXGETLINE]) {
+static bool checkMAGIC_CVM(const char** line) {
     //~ (void)printf("\OKx %"PRIx32" vs %"PRIx32" ", (uint32_t) *log_prefix, (uint32_t)MAGIC_CVM );
     uint32_t* log_prefix = (uint32_t*) *line;
     return *log_prefix == MAGIC_CVM;
 }
 
-static bool check_MAGIC_SupplementarInfoBox(
-    const char* line[STATIC_MAXGETLINE]) {
+static bool check_MAGIC_SupplementarInfoBox(const char** line) {
     bool result = false;          // line is supposed to first not be MAGIC
     if  (checkMAGIC_CVM(line)) {  // Ensure line starts with 'cvm['
         char* colon;              // future pointer to the first colon
@@ -68,8 +65,7 @@ static bool check_MAGIC_SupplementarInfoBox(
     return result;
 }
 
-static bool check_regexp_SupplementarInfoBox(
-    const char* line[STATIC_MAXGETLINE]) {
+static bool check_regexp_SupplementarInfoBox(const char** line) {
     // test is string contains SupplementarInfoBox one asin and one word with both
     // have at least one character length
     const char* regexp_SupplementarInfoBox =
@@ -77,8 +73,8 @@ static bool check_regexp_SupplementarInfoBox(
     return check_regexp(line, &regexp_SupplementarInfoBox);
 }
 
-static void extractdata_SupplementarInfoBox(
-    const char** line, char** asin, char** word) {
+static void extractdata_SupplementarInfoBox(const char** line,
+            char** asin, char** word) {
     char* lastcursor = (char*) *line;  // lastcursor point to first char of line
     // According to doc, and relying on RegExp, we first extract asin starting from
     // the beginnig ont line
@@ -88,7 +84,7 @@ static void extractdata_SupplementarInfoBox(
     // Now asin & word contains their value.
 }
 
-void process_SupplementarInfoBox(const char* line[STATIC_MAXGETLINE]) {
+void process_SupplementarInfoBox(const char** line) {
     if (strlen(*line) > 4 && check_MAGIC_SupplementarInfoBox(line)) {
         if (check_regexp_SupplementarInfoBox(line)) {
             char* room;
@@ -103,8 +99,8 @@ void process_SupplementarInfoBox(const char* line[STATIC_MAXGETLINE]) {
 
 
 /*
-//~ Old version with array instead of pointer.
-void process_SupplementarInfoBox(const char* line[STATIC_MAXGETLINE]) {
+    //~ Old version with array instead of pointer.
+    void process_SupplementarInfoBox(const char* line[STATIC_MAXGETLINE]) {
     if (strlen(*line) > 4 && check_MAGIC_SupplementarInfoBox(line)) {
         if (check_regexp_SupplementarInfoBox(line)) {
             char room[MAX_GETLINE + 1];
@@ -123,5 +119,5 @@ void process_SupplementarInfoBox(const char* line[STATIC_MAXGETLINE]) {
             //~ do_http_request(room);
         }
     }
-}
+    }
 */
