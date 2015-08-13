@@ -23,6 +23,7 @@
 #define _GNU_SOURCE
 
 #include "./lib/filter_cvm.h"
+#include "./lib/filter_powerd.h"
 // Insert here future lib/filter_****.h file
 
 // PROTO
@@ -46,7 +47,8 @@ static void get_stdin_line(void) {
             line[read - 1] = '\0';
             // filter and process if it's a SupplementarInfoBox
             process_SupplementarInfoBox((const char**)&line);
-            process_BookletManager  ((const char**)&line);
+            process_BookletManager((const char**)&line);
+            process_lipcevts((const char**)&line);
             // Insert here future filters
         }
     }
