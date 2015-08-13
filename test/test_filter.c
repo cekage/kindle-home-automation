@@ -51,7 +51,7 @@ TEST substring_simple_ptr() {
 TEST substring_simple_array() {
     const char* abcazerty = "abc+azerty=1";
     int cmp;
-    char azerty[MAX_GETLINE + 1];
+    char azerty[100 + 1];
     char** myptr = (char**) &azerty;
     (void)extract_substring((const char**)&abcazerty, (char**) &myptr, '+', '=');
     cmp = strcmp((char*) myptr, "azerty");
