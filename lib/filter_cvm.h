@@ -23,7 +23,7 @@
 #define _GNU_SOURCE
 
 #include <stdio.h>
-#include <inttypes.h>  // pro PRIx64 stuff
+#include <inttypes.h>  // for PRIx64 stuff
 
 #ifndef FILTER_H
 #include "filter.h"
@@ -56,8 +56,7 @@ void process_BookletManager(const char** line);
 
 static bool checkMAGIC_CVM(const char** line) {
     //~ (void)printf("\OKx %"PRIx32" vs %"PRIx32" ", (uint32_t) *log_prefix, (uint32_t)MAGIC_CVM );
-    uint32_t* log_prefix = (uint32_t*) *line;
-    return *log_prefix == MAGIC_CVM;
+    return *((uint32_t*) *line) == (uint32_t) MAGIC_CVM;
 }
 
 /* *****************************   SupplementarInfoBox    ******************************** */
@@ -65,21 +64,17 @@ static bool checkMAGIC_CVM(const char** line) {
 static bool check_MAGIC_SupplementarInfoBox(const char** line) {
     bool result = false;          // line is supposed to first not be MAGIC
     if  (checkMAGIC_CVM(line)) {  // Ensure line starts with 'cvm['
-        char* colon;              // future pointer to the first colon
-        uint64_t* linemagic;             // future pointer to the MAGIC
-        colon = strchr(*line, ':');
-        // No need to check colon is NULL cause if we have a cvm[ we have at least one colon
+        char* cursor;              // future pointer to the first cursor
+        cursor = strchr(*line, ':');
+        // No need to check cursor is NULL cause if we have a cvm[ we have at least one cursor
         // It's possible syslog fails at sending log line but is it our problem ?
-        colon += 4;                      // MAGIC is 4 chars after ':' cvm[1234]: I S'
-        linemagic = (uint64_t*) colon;   // pointing to colon
+        cursor += 4;                      // MAGIC is 4 chars after ':' cvm[1234]: I S'
         //~ (void)printf("\OKx %"PRIx64" vs %"PRIx64" ", (uint64_t) *linemagic,
         //~ (uint64_t)MAGIC_SupplementarInfoBox );
-        result = (MAGIC_SupplementarInfoBox == *linemagic); // updating result
+        result = (MAGIC_SupplementarInfoBox == *((uint64_t*) cursor));
     }
     return result;
 }
-
-
 
 static bool check_regexp_SupplementarInfoBox(const char** line) {
     // test is string contains SupplementarInfoBox one asin and one word with both
@@ -105,17 +100,17 @@ void process_SupplementarInfoBox(const char** line) {
         if (check_regexp_SupplementarInfoBox(line)) {
             char* room;
             char* asin;
+            char* url_request = NULL;
             extractdata_SupplementarInfoBox(line, (char**) &asin, (char**) &room);
-            char* url_request;
             if (-1 != asprintf(&url_request, "?toggle=%s", room)) {
-                (void)printf("url_request=%s",url_request);
+                //~ (void)printf("url_request=%s",url_request);
                 do_http_request(url_request);
                 free(url_request);
             } else {
                 perror("process_SupplementarInfoBox() can't build url_request");
             }
-            free(room);
             free(asin);
+            free(room);
         }
     }
 }
@@ -125,15 +120,14 @@ void process_SupplementarInfoBox(const char** line) {
 static bool check_MAGIC_BookletManager(const char** line) {
     bool result = false;          // line is supposed to first not be MAGIC
     if  (checkMAGIC_CVM(line)) {  // Ensure line starts with 'cvm['
-        char* colon;              // future pointer to the first colon
-        uint64_t* linemagic;             // future pointer to the MAGIC
-        colon = strchr(*line, ':');
-        // No need to check colon is NULL cause if we have a cvm[ we have at least one colon
+        char* cursor;              // future pointer to the first cursor
+        cursor = strchr(*line, ':');
+        // No need to check cursor is NULL cause if we have a cvm[ we have at least one cursor
         // It's possible syslog fails at sending log line but is it our problem ?
-        colon += 4;                      // MAGIC is 4 chars after ':' cvm[1234]: I S'
-        linemagic = (uint64_t*) colon;   // pointing to colon
-        //~ (void)printf("\nOKx %"PRIx64" vs %"PRIx64" for %s", (uint64_t) *linemagic, (uint64_t)MAGIC_BookletManager,colon );
-        result = (MAGIC_BookletManager == *linemagic); // updating result
+        cursor += 4;                      // MAGIC is 4 chars after ':' cvm[1234]: I S'
+        //~ (void)printf("\OKx %"PRIx64" vs %"PRIx64" ", (uint64_t) *linemagic,
+        //~ (uint64_t)MAGIC_SupplementarInfoBox );
+        result = (MAGIC_BookletManager == *((uint64_t*) cursor)); // updating result
     }
     return result;
 }
@@ -163,8 +157,7 @@ void process_BookletManager(const char** line) {
             char* from;
             char* to;
             extractdata_BookletManager(line, (char**) &from, (char**) &to);
-            //do_http_request(room);
-            (void)printf("\nBookletManager user went to %s from %s\n", from, to);
+            (void)printf("BookletManager user went to %s from %s\n", from, to);
             free(from);
             free(to);
         }
