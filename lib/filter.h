@@ -37,8 +37,16 @@ char* extract_substring(const char** src, char** dst,
                         const char key_start, const char key_stop);
 bool check_MAGIC_32_64(const char** line,
                        const uint32_t magic32, const uint64_t magic64);
-                       static void extractdata_only_two_keys(const char** line,
-        char** key1, char** key2);
+bool check_MAGIC_32_64_masked(const char** line,
+                       const uint32_t magic32, const uint32_t mask32,
+                       const uint64_t magic64, const uint64_t mask64);
+bool check_MAGIC_64_64_masked(const char** line,
+                       const uint64_t magic1, const uint64_t mask1,
+                       const uint64_t magic2, const uint64_t mask2);
+void extractdata_only_2_keys(const char** line,
+                                    char** key1, char** key2);
+void extractdata_only_3_keys(const char** line, char** key1,
+                                    char** key2, char** key3);
 
 
 bool check_regexp(const char** line, const char** filter) {
@@ -55,8 +63,8 @@ bool check_regexp(const char** line, const char** filter) {
     return 0 == reg_result;
 }
 
-static void extractdata_only_two_keys(const char** line,
-        char** key1, char** key2) {
+void extractdata_only_2_keys(const char** line,
+                                    char** key1, char** key2) {
     char* lastcursor = (char*) *line;  // lastcursor point to first char of line
     /*
         According to doc, and relying on RegExp, we first extract key1 starting from
@@ -68,16 +76,57 @@ static void extractdata_only_two_keys(const char** line,
     // Now key1 & key2 contains their value.
 }
 
+void extractdata_only_3_keys(const char** line, char** key1,
+                                    char** key2, char** key3) {
+    char* lastcursor = (char*) *line;  // lastcursor point to first char of line
+    /*
+        According to doc, and relying on RegExp, we first extract key1 starting from
+        the beginnig on the line
+    */
+    lastcursor = extract_substring((const char**) &lastcursor, key1, '=', ',');
+    // and then extract key2 from the last comma.
+    lastcursor = extract_substring((const char**) &lastcursor, key2, '=', ',');
+    // and then extract key3 from the last comma.
+    (void)extract_substring((const char**) &lastcursor, key3, '=', ':');
+    // Now key1 & key2  & key3 contains their value.
+}
+
+
 bool check_MAGIC_32_64(const char** line,
                        const uint32_t magic32, const uint64_t magic64) {
+    return check_MAGIC_32_64_masked(line,magic32, 0xFFFFFFFF, magic64, 0xFFFFFFFFFFFFFFFF);
+}
+
+bool check_MAGIC_32_64_masked(const char** line,
+                       const uint32_t magic32, const uint32_t mask32,
+                       const uint64_t magic64, const uint64_t mask64) {
+
     bool result = false;
-    if (*((uint32_t*) *line) == magic32) {
+    if ((magic32 & mask32) == *((uint32_t*) *line)) {
         char* cursor;
         // MAGIC is 4 chars after the colon "prog.*[pid]: . MAGIC64?.*"
         cursor = strchr(*line, ':') + 4;
         //~ (void)printf("\OKx %"PRIx64" vs %"PRIx64" ",
-                     //~ (uint64_t) *line, magic64 );
-        result = (magic64 == *((uint64_t*) cursor));
+        //~ (uint64_t) *line, magic64 );
+        result = ((magic64 & mask64) == *((uint64_t*) cursor));
+    }
+    return result;
+}
+
+bool check_MAGIC_64_64_masked(const char** line,
+                       const uint64_t magic1, const uint64_t mask1,
+                       const uint64_t magic2, const uint64_t mask2) {
+
+    bool result = false;
+    //~ (void)printf("cmp %lx to %lx\n",magic1 & mask1,*((unsigned long*) *line)& mask1);
+    if ((magic1 & mask1) == (*((uint64_t*) *line)& mask1)) {
+        //~ (void)printf("magic1/mask1 is ok\n");
+        char* cursor;
+        // MAGIC is 4 chars after the colon "prog.*[pid]: . MAGIC64?.*"
+        cursor = strchr(*line, ':') + 4;
+        //~ (void)printf("\OKx %"PRIx64" vs %"PRIx64" ",
+        //~ (uint64_t) *line, magic64 );
+        result = ((magic2 & mask2) == (*((uint64_t*) cursor) & mask2));
     }
     return result;
 }
