@@ -35,13 +35,14 @@ static void get_stdin_line(void) {
     char* line = NULL; //   idem
     // While return is not -1 then parse and proceed lines
     while (-1 != (read = getline(&line, &len, stdin))) {
-        /*  > 1 is a arbitray value, you can safely presume
+        /*  > 1 is an arbitray value, you can safely presume
             that a line MUST contain at least 10 char to be a cvm minimal
-            comand.
-        */
+            comand. */
         if (1 < read) {
-            // I choose to terminate my syslog format by \n
-            // so it's safe to presume the n-1 is \n and erase it.
+            /*
+                I choose to terminate my syslog format by \n
+                so it's safe to presume the n-1 is \n and erase it.
+            */
             line[read - 1] = '\0';
             // filter and process if it's a SupplementarInfoBox
             process_SupplementarInfoBox((const char**)&line);
