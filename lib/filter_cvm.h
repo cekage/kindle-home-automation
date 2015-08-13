@@ -40,27 +40,15 @@
 // in string : 'BookletM'
 #define MAGIC_BookletManager 0x4d74656c6b6f6f42
 
-static bool check_regexp_SupplementarInfoBox(const char** line);
 static void extractdata_SupplementarInfoBox(const char** line,
         char** asin, char** word);
 void process_SupplementarInfoBox(const char** line);
 
-static bool check_regexp_BookletManager(const char** line);
 static void extractdata_BookletManager(const char** line,
                                        char** asin, char** word);
 void process_BookletManager(const char** line);
 
 /* *****************************   SupplementarInfoBox    ******************************** */
-
-static bool check_regexp_SupplementarInfoBox(const char** line) {
-    /*
-        test is string contains SupplementarInfoBox one asin and one word with both
-        have at least one character length
-    */
-    const char* regexp_SupplementarInfoBox =
-        "SupplementarInfoBox:QUICK_LOOKUP:asin=.+,word=.+:$";
-    return check_regexp(line, &regexp_SupplementarInfoBox);
-}
 
 static void extractdata_SupplementarInfoBox(const char** line,
         char** asin, char** word) {
@@ -76,8 +64,11 @@ static void extractdata_SupplementarInfoBox(const char** line,
 }
 
 void process_SupplementarInfoBox(const char** line) {
-    if (strlen(*line) > 4 && check_MAGIC_32_64(line,MAGIC_CVM,MAGIC_SupplementarInfoBox)) {
-        if (check_regexp_SupplementarInfoBox(line)) {
+    if (strlen(*line) > 4 &&
+            check_MAGIC_32_64(line, MAGIC_CVM, MAGIC_SupplementarInfoBox)) {
+        const char* regexp_SupplementarInfoBox =
+            "SupplementarInfoBox:QUICK_LOOKUP:asin=.+,word=.+:$";
+        if (check_regexp(line, &regexp_SupplementarInfoBox)) {
             char* room;
             char* asin;
             char* url_request = NULL;
@@ -97,14 +88,6 @@ void process_SupplementarInfoBox(const char** line) {
 
 /* *****************************   BookletManager    ******************************** */
 
-static bool check_regexp_BookletManager(const char** line) {
-    // test is string contains SupplementarInfoBox one asin and one word with both
-    // have at least one character length
-    const char* regexp_BookletManager =
-        "BookletManager:SwitchingBooklets:from=.+,to=.+:$";
-    return check_regexp(line, &regexp_BookletManager);
-}
-
 static void extractdata_BookletManager(const char** line,
                                        char** first, char** second) {
     char* lastcursor = (char*) *line;  // lastcursor point to first char of line
@@ -117,9 +100,11 @@ static void extractdata_BookletManager(const char** line,
 }
 
 void process_BookletManager(const char** line) {
-    //~ if (strlen(*line) > 47 && check_MAGIC_BookletManager(line)) {
-    if (strlen(*line) > 47 && check_MAGIC_32_64(line,MAGIC_CVM,MAGIC_BookletManager)) {
-        if (check_regexp_BookletManager(line)) {
+    if (strlen(*line) > 47 &&
+            check_MAGIC_32_64(line, MAGIC_CVM, MAGIC_BookletManager)) {
+        const char* regexp_BookletManager =
+            "BookletManager:SwitchingBooklets:from=.+,to=.+:$";
+        if (check_regexp(line, &regexp_BookletManager)) {
             char* from;
             char* to;
             extractdata_BookletManager(line, (char**) &from, (char**) &to);
@@ -129,7 +114,6 @@ void process_BookletManager(const char** line) {
         }
     }
 }
-
 
 /* *****************************   Garbage  ¯\_(ツ)_/¯   ******************************** */
 

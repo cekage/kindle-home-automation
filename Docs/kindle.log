@@ -647,4 +647,12 @@ cvm[1234]: I BookletManager:SwitchingBooklets:from=ScreenSaverBooklet,to=Home:
 cvm[1234]: I lipc:gsp:prop=orientation, source=com.lab126.system:Get string property
 cvm[1234]: W SystemBarImpl:SPIN:spinCount=0:count <=0 when stopSpinner() called
 cvm[1234]: I MainView:Information::The WiFi dialog has been previously shown.
+powerd[1234]: I lipc:evts:name=goingToScreenSaver, origin=com.lab126.powerd, fparam=3:Event sent
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.powerd,name=goingToScreenSaver,arg0=3,arg1=<None>:
+powerd[1234]: I def:pbpress:time=1439500481.172:Power button pressed
+cvm[1234]: I LipcService:EventArrived:source=com.lab126.powerd,name=outOfScreenSaver,arg0=1,arg1=<None>:
+powerd[1234]: I lipc:evts:name=outOfScreenSaver, origin=com.lab126.powerd, fparam=1:Event sent
+powerd[1234]: I def:statech:prev=SCREEN SAVER, next=ACTIVE:State change: SCREEN SAVER -> ACTIVE
+powerd[1234]: I def:acc::Turn acc port on
+powerd[1234]: E def:usbfs::Failed to open sys entry for USB FS ONLINE
 
