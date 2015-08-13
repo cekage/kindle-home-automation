@@ -52,14 +52,14 @@ static bool checkMAGIC_CVM(const char* line[STATIC_MAXGETLINE]) {
 
 static bool check_MAGIC_SupplementarInfoBox(
     const char* line[STATIC_MAXGETLINE]) {
-    bool result = false;      // line is supposed to first not be MAGIC
+    bool result = false;          // line is supposed to first not be MAGIC
     if  (checkMAGIC_CVM(line)) {  // Ensure line starts with 'cvm['
         char* colon;              // future pointer to the first colon
-        uint64_t* linemagic;      // future pointer to the MAGIC
+        uint64_t* linemagic;             // future pointer to the MAGIC
         colon = strchr(*line, ':');
         // No need to check colon is NULL cause if we have a cvm[ we have at least one colon
         // It's possible syslog fails at sending log line but is it our problem ?
-        colon += 4;                // MAGIC is 4 chars after ':' cvm[1234]: I S'
+        colon += 4;                      // MAGIC is 4 chars after ':' cvm[1234]: I S'
         linemagic = (uint64_t*) colon;   // pointing to colon
         //~ (void)printf("\OKx %"PRIx64" vs %"PRIx64" ", (uint64_t) *linemagic,
         //~ (uint64_t)MAGIC_SupplementarInfoBox );
