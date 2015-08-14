@@ -531,12 +531,50 @@ TEST magic_32_64_not_enough_log() {
     PASS();
 }
 
+/*
+    Verify behavior true 32 & 64 magic
+    Wanted result : true
+*/
+TEST magic_32_64_masked_normal() {
+    const char* fakelog =
+        "bw[s234]: X Example:key1=value1,key2=value2,Weird Comment -> Like ScreenSaver:";
+    uint32_t magicbw = 0x115b7762; // bw[s
+    uint32_t maskbw =  0x00ffffff; // only the 3 first chars matter
+    uint64_t magicexample = 0x3a656c706d617845; // 'Example:'
+    uint64_t maskexample =  0x00ffffffffffffff; // suppress the colon
+    bool result;
+    result = check_MAGIC_32_64_masked(&fakelog,
+                                      magicbw, maskbw, magicexample, maskexample);
+    ASSERT_EQ(true, result);
+    PASS();
+}
+
+/*
+    Verify behavior true 64 & 64 magic
+    Wanted result : true
+*/
+TEST magic_64_64_masked_normal() {
+    const char* fakelog =
+        "bw[s234]: X Example:key1=value1,key2=value2,Weird Comment -> Like ScreenSaver:";
+    uint32_t magicbw = 0x115b7762; // bw[s
+    uint32_t maskbw =  0x00ffffff; // only the 3 first chars matter
+    uint64_t magicexample = 0x3a656c706d617845; // 'Example:'
+    uint64_t maskexample =  0x00ffffffffffffff; // suppress the colon
+    bool result;
+    result = check_MAGIC_64_64_masked(&fakelog,
+                                      magicbw, maskbw, magicexample, maskexample);
+    ASSERT_EQ(true, result);
+    PASS();
+}
+
 
 SUITE(suite_check_magic) {
     RUN_TEST(magic_32_64_normal);
     RUN_TEST(magic_32_64_bad32);
     RUN_TEST(magic_32_64_bad64);
     RUN_TEST(magic_32_64_not_enough_log);
+    RUN_TEST(magic_32_64_masked_normal);
+    RUN_TEST(magic_64_64_masked_normal);
 }
 
 /* Add definitions that need to be in the test runner's main file. */
