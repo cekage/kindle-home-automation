@@ -110,7 +110,7 @@ bool check_MAGIC_32_64_masked(const char** line,
         cursor = strchr(*line, ':') + 4;
         //~ (void)printf("\OKx %"PRIx64" vs %"PRIx64" ",
         //~ (uint64_t) *line, magic64 );
-        result = ((magic64 & mask64) == *((uint64_t*) cursor));
+        result = ((magic64 & mask64) == (*((uint64_t*) cursor) & mask64));
     }
     return result;
 }
