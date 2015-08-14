@@ -38,15 +38,15 @@ char* extract_substring(const char** src, char** dst,
 bool check_MAGIC_32_64(const char** line,
                        const uint32_t magic32, const uint64_t magic64);
 bool check_MAGIC_32_64_masked(const char** line,
-                       const uint32_t magic32, const uint32_t mask32,
-                       const uint64_t magic64, const uint64_t mask64);
+                              const uint32_t magic32, const uint32_t mask32,
+                              const uint64_t magic64, const uint64_t mask64);
 bool check_MAGIC_64_64_masked(const char** line,
-                       const uint64_t magic1, const uint64_t mask1,
-                       const uint64_t magic2, const uint64_t mask2);
+                              const uint64_t magic1, const uint64_t mask1,
+                              const uint64_t magic2, const uint64_t mask2);
 void extractdata_only_2_keys(const char** line,
-                                    char** key1, char** key2);
+                             char** key1, char** key2);
 void extractdata_only_3_keys(const char** line, char** key1,
-                                    char** key2, char** key3);
+                             char** key2, char** key3);
 
 
 bool check_regexp(const char** line, const char** filter) {
@@ -64,7 +64,7 @@ bool check_regexp(const char** line, const char** filter) {
 }
 
 void extractdata_only_2_keys(const char** line,
-                                    char** key1, char** key2) {
+                             char** key1, char** key2) {
     char* lastcursor = (char*) *line;  // lastcursor point to first char of line
     /*
         According to doc, and relying on RegExp, we first extract key1 starting from
@@ -77,7 +77,7 @@ void extractdata_only_2_keys(const char** line,
 }
 
 void extractdata_only_3_keys(const char** line, char** key1,
-                                    char** key2, char** key3) {
+                             char** key2, char** key3) {
     char* lastcursor = (char*) *line;  // lastcursor point to first char of line
     /*
         According to doc, and relying on RegExp, we first extract key1 starting from
@@ -94,13 +94,13 @@ void extractdata_only_3_keys(const char** line, char** key1,
 
 bool check_MAGIC_32_64(const char** line,
                        const uint32_t magic32, const uint64_t magic64) {
-    return check_MAGIC_32_64_masked(line,magic32, 0xFFFFFFFF, magic64, 0xFFFFFFFFFFFFFFFF);
+    return check_MAGIC_32_64_masked(line, magic32, 0xFFFFFFFF, magic64,
+                                    0xFFFFFFFFFFFFFFFF);
 }
 
 bool check_MAGIC_32_64_masked(const char** line,
-                       const uint32_t magic32, const uint32_t mask32,
-                       const uint64_t magic64, const uint64_t mask64) {
-
+                              const uint32_t magic32, const uint32_t mask32,
+                              const uint64_t magic64, const uint64_t mask64) {
     bool result = false;
     if ((magic32 & mask32) == *((uint32_t*) *line)) {
         char* cursor;
@@ -114,9 +114,8 @@ bool check_MAGIC_32_64_masked(const char** line,
 }
 
 bool check_MAGIC_64_64_masked(const char** line,
-                       const uint64_t magic1, const uint64_t mask1,
-                       const uint64_t magic2, const uint64_t mask2) {
-
+                              const uint64_t magic1, const uint64_t mask1,
+                              const uint64_t magic2, const uint64_t mask2) {
     bool result = false;
     //~ (void)printf("cmp %lx to %lx\n",magic1 & mask1,*((unsigned long*) *line)& mask1);
     if ((magic1 & mask1) == (*((uint64_t*) *line)& mask1)) {
@@ -156,12 +155,16 @@ char* extract_substring(const char** src, char** dst,
                 //~ strncat(*dst, cursor_start, MIN(cursor_length, MAX_GETLINE));
                 asprint_ret = asprintf((char** restrict) dst, "%s", cursor_start);
                 if (-1 != asprint_ret) {
-                    // No error occurs during asprintf so let truncate dst.
-                    // It's possible to truncate during asprintf by using %.Xs
-                    // but X is not predictible and needs more string manipulation.
+                    /*
+                        No error occurs during asprintf so let truncate dst.
+                        It's possible to truncate during asprintf by using %.Xs
+                        but X is not predictible and needs more string manipulation.
+                    */
                     *(*dst + cursor_length) = '\0';
-                    // asprint + cutting dst after cursor_length bytes is more
-                    // efficient on the kindle than calloc+strncat  ¯\_(ツ)_/¯
+                    /*
+                        asprint + cutting dst after cursor_length bytes is more
+                        efficient on the kindle than calloc+strncat  ¯\_(ツ)_/¯
+                    */
                     result = cursor_end;
                 }
             }
