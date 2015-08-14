@@ -102,7 +102,9 @@ bool check_MAGIC_32_64_masked(const char** line,
                               const uint32_t magic32, const uint32_t mask32,
                               const uint64_t magic64, const uint64_t mask64) {
     bool result = false;
-    if ((magic32 & mask32) == *((uint32_t*) *line)) {
+    //~ (void)printf("cmp %lx to %lx\n", magic1 & mask1,
+                 //~ *((unsigned long*) *line)& mask1);
+    if ((magic32 & mask32) == (*((uint32_t*) *line)& mask32)) {
         char* cursor;
         // MAGIC is 4 chars after the colon "prog.*[pid]: . MAGIC64?.*"
         cursor = strchr(*line, ':') + 4;
