@@ -13,7 +13,7 @@
 
     0. You just DO WHAT THE FUCK YOU WANT TO.
 
-    This is a basis for filters. See filter_cvm as an example.
+    This is a basis for filters. See filter_cvm / filter_powerd as an example.
 */
 
 #define _GNU_SOURCE
@@ -101,8 +101,8 @@ bool check_MAGIC_32_64(const char** line,
 bool check_MAGIC_32_64_masked(const char** line,
                               const uint32_t magic32, const uint32_t mask32,
                               const uint64_t magic64, const uint64_t mask64) {
-    perror("check_MAGIC_32_64_masked deprecated. use check_MAGIC_64_64_masked()");
     bool result = false;
+    perror("check_MAGIC_32_64_masked deprecated. use check_MAGIC_64_64_masked()");
     //~ (void)printf("cmp %lx to %lx\n", magic1 & mask1,
     //~ *((unsigned long*) *line)& mask1);
     if ((magic32 & mask32) == (*((uint32_t*) *line)& mask32)) {
