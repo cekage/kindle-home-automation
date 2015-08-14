@@ -61,7 +61,6 @@ TEST substring_simple_array() {
     PASS();
 }
 
-
 /*
     Verify trivial usage, with inverted key_end/key_start
     Wanted result : untouched
@@ -126,7 +125,6 @@ TEST substring_string_null() {
     PASS();
 }
 
-
 /*
     Verify trivial usage, with an empty searched string
     Wanted result : untouched
@@ -184,7 +182,6 @@ TEST return_substring_simple() {
     PASS();
 }
 
-
 /*
     Verify behavior when both key_start and key_stop are missing.
     Wanted result : NULL
@@ -240,6 +237,7 @@ TEST return_substring_nostart() {
     free(azerty);
     PASS();
 }
+
 /*
     Verify behavior when key_start exists but key_end is missing.
     Wanted result : NULL
@@ -266,15 +264,15 @@ SUITE(suite_return_substring) {
     Verify normal behavior.
     Wanted result : value1 and value2 with expected values.
 */
-TEST extract_data_normal() {
+TEST extract_data2_normal() {
     const char* fakelog = "daemon[pid]: X BlahBlahEngine:key1=value1,key2=value2:";
     char* value1 = NULL;
     char* value2 = NULL;
     int cmp;
     extractdata_only_2_keys(&fakelog, &value1, &value2);
-    cmp = strcmp(value1,"value1");
+    cmp = strcmp(value1, "value1");
     ASSERT_EQ(0, cmp);
-    cmp = strcmp(value2,"value2");
+    cmp = strcmp(value2, "value2");
     ASSERT_EQ(0, cmp);
     free(value2);
     free(value1);
@@ -285,13 +283,13 @@ TEST extract_data_normal() {
     Verify behavior if last colon is missing.
     Wanted result : value1 correct and value2 untouched (so NULL);
 */
-TEST extract_data_missing_end_colon() {
+TEST extract_data2_missing_end_colon() {
     const char* fakelog = "daemon[pid]: X BlahBlahEngine:key1=value1,key2=value2";
     char* value1 = NULL;
     char* value2 = NULL;
     int cmp;
     extractdata_only_2_keys(&fakelog, &value1, &value2);
-    cmp = strcmp(value1,"value1");
+    cmp = strcmp(value1, "value1");
     ASSERT_EQ(0, cmp);
     free(value1);
     ASSERT_EQ(NULL, value2);
@@ -303,16 +301,17 @@ TEST extract_data_missing_end_colon() {
     Verify behavior if there is more than expected values
     Wanted result : first key ok, second key contains excessive characters.
 */
-TEST extract_data_excessive_keys() {
-    const char* fakelog = "daemon[pid]: X BlahBlahEngine:key1=value1,key2=value2,key3=value3:";
+TEST extract_data2_excessive_keys() {
+    const char* fakelog =
+        "daemon[pid]: X BlahBlahEngine:key1=value1,key2=value2,key3=value3:";
     char* value1 = NULL;
     char* value2 = NULL;
     int cmp;
     extractdata_only_2_keys(&fakelog, &value1, &value2);
-    cmp = strcmp(value1,"value1");
+    cmp = strcmp(value1, "value1");
     ASSERT_EQ(0, cmp);
     free(value1);
-    cmp = strcmp(value2,"value2,key3=value3");
+    cmp = strcmp(value2, "value2,key3=value3");
     ASSERT_EQ(0, cmp);
     free(value2);
     PASS();
@@ -322,7 +321,7 @@ TEST extract_data_excessive_keys() {
     Verify behavior if there is not enough key=value.
     Wanted result : both value1 and value2 equals NULL
 */
-TEST extract_data_not_enough_keys() {
+TEST extract_data2_not_enough_keys() {
     const char* fakelog = "daemon[pid]: X BlahBlahEngine:key1=value1:";
     char* value1 = NULL;
     char* value2 = NULL;
@@ -336,25 +335,208 @@ TEST extract_data_not_enough_keys() {
     Verify behavior if there is not enough key=value
     Wanted result : both value1 and value2 equals NULL
 */
-TEST extract_data_not_enough_keys_but_unstructured_comment() {
-    const char* fakelog = "daemon[pid]: X BlahBlahEngine:key1=value1,Weird Comment -> Like ScreenSaver:";
+TEST extract_data2_not_enough_keys_but_unstructured_comment() {
+    const char* fakelog =
+        "daemon[pid]: X BlahBlahEngine:key1=value1,Weird Comment -> Like ScreenSaver:";
     char* value1 = NULL;
     char* value2 = NULL;
     int cmp;
     extractdata_only_2_keys(&fakelog, &value1, &value2);
-    cmp = strcmp(value1,"value1");
+    cmp = strcmp(value1, "value1");
     ASSERT_EQ(0, cmp);
     free(value1);
     ASSERT_EQ(NULL, value2);
     PASS();
 }
 
+
+/*
+    Verify normal behavior.
+    Wanted result : value1, value2 and value3 with expected values.
+*/
+TEST extract_data3_normal() {
+    const char* fakelog =
+        "daemon[pid]: X BlahBlahEngine:key1=value1,key2=value2,key3=value3:";
+    char* value1 = NULL;
+    char* value2 = NULL;
+    char* value3 = NULL;
+    int cmp;
+    extractdata_only_3_keys(&fakelog, &value1, &value2, &value3);
+    cmp = strcmp(value1, "value1");
+    free(value1);
+    ASSERT_EQ(0, cmp);
+    cmp = strcmp(value2, "value2");
+    free(value2);
+    ASSERT_EQ(0, cmp);
+    cmp = strcmp(value3, "value3");
+    free(value3);
+    ASSERT_EQ(0, cmp);
+    PASS();
+}
+
+/*
+    Verify behavior if last colon is missing.
+    Wanted result : value1 & value2 correct and value3 untouched (so NULL);
+*/
+TEST extract_data3_missing_end_colon() {
+    const char* fakelog =
+        "daemon[pid]: X BlahBlahEngine:key1=value1,key2=value2,key3=value3";
+    char* value1 = NULL;
+    char* value2 = NULL;
+    char* value3 = NULL;
+    int cmp;
+    extractdata_only_3_keys(&fakelog, &value1, &value2, &value3);
+    cmp = strcmp(value1, "value1");
+    free(value1);
+    ASSERT_EQ(0, cmp);
+    cmp = strcmp(value2, "value2");
+    free(value2);
+    ASSERT_EQ(0, cmp);
+    ASSERT_EQ(NULL, value3);
+    PASS();
+}
+
+/*
+    Verify behavior if there is more than expected values
+    Wanted result : value1 & value2 ok, value3 contains excessive characters.
+*/
+TEST extract_data3_excessive_keys() {
+    const char* fakelog =
+        "daemon[pid]: X BlahBlahEngine:key1=value1,key2=value2,key3=value3,key4=value4:";
+    char* value1 = NULL;
+    char* value2 = NULL;
+    char* value3 = NULL;
+    int cmp;
+    extractdata_only_3_keys(&fakelog, &value1, &value2, &value3);
+    cmp = strcmp(value1, "value1");
+    ASSERT_EQ(0, cmp);
+    free(value1);
+    cmp = strcmp(value2, "value2");
+    ASSERT_EQ(0, cmp);
+    free(value2);
+    cmp = strcmp(value3, "value3,key4=value4");
+    ASSERT_EQ(0, cmp);
+    free(value3);
+    PASS();
+}
+
+/*
+    Verify behavior if there is not enough key=value.
+    Wanted result : value1, value2 and value3 equals NULL
+*/
+TEST extract_data3_not_enough_keys() {
+    const char* fakelog = "daemon[pid]: X BlahBlahEngine:key1=value1:";
+    char* value1 = NULL;
+    char* value2 = NULL;
+    char* value3 = NULL;
+    extractdata_only_3_keys(&fakelog, &value1, &value2, &value3);
+    ASSERT_EQ(NULL, value1);
+    ASSERT_EQ(NULL, value2);
+    ASSERT_EQ(NULL, value3);
+    PASS();
+}
+
+/*
+    Verify behavior if there is not enough key=value
+    Wanted result : both value1 and value2 equals NULL
+*/
+TEST extract_data3_not_enough_keys_but_unstructured_comment() {
+    const char* fakelog =
+        "daemon[pid]: X BlahBlahEngine:key1=value1,key2=value2,Weird Comment -> Like ScreenSaver:";
+    char* value1 = NULL;
+    char* value2 = NULL;
+    char* value3 = NULL;
+    int cmp;
+    extractdata_only_3_keys(&fakelog, &value1, &value2, &value3);
+    cmp = strcmp(value1, "value1");
+    ASSERT_EQ(0, cmp);
+    free(value1);
+    cmp = strcmp(value2, "value2");
+    ASSERT_EQ(0, cmp);
+    free(value2);
+    ASSERT_EQ(NULL, value3);
+    PASS();
+}
+
 SUITE(suite_extract_data) {
-    RUN_TEST(extract_data_normal);
-    RUN_TEST(extract_data_missing_end_colon);
-    RUN_TEST(extract_data_excessive_keys);
-    RUN_TEST(extract_data_not_enough_keys);
-    RUN_TEST(extract_data_not_enough_keys_but_unstructured_comment);
+    RUN_TEST(extract_data2_normal);
+    RUN_TEST(extract_data2_missing_end_colon);
+    RUN_TEST(extract_data2_excessive_keys);
+    RUN_TEST(extract_data2_not_enough_keys);
+    RUN_TEST(extract_data2_not_enough_keys_but_unstructured_comment);
+    RUN_TEST(extract_data3_normal);
+    RUN_TEST(extract_data3_missing_end_colon);
+    RUN_TEST(extract_data3_excessive_keys);
+    RUN_TEST(extract_data3_not_enough_keys);
+    RUN_TEST(extract_data3_not_enough_keys_but_unstructured_comment);
+}
+
+/*
+    Verify behavior true 32 & 64 magic
+    Wanted result : true
+*/
+TEST magic_32_64_normal() {
+    const char* fakelog =
+        "lmao[1234]: X BlahBlahEngine:key1=value1,key2=value2,Weird Comment -> Like ScreenSaver:";
+    /*
+        Python hint to calculate MAGIC 64 :
+                for b in reversed("BlahBlahEngine"[0:8]):print("%x" % ord(b), end="")
+        ---> 68616c4268616c42.
+    */
+    uint32_t magiclmao = 0x6f616d6c;
+    uint64_t magicblahblah = 0x68616c4268616c42;
+    bool result = check_MAGIC_32_64(&fakelog, magiclmao, magicblahblah);
+    ASSERT_EQ(true, result);
+    PASS();
+}
+
+/*
+    Verify behavior bad 32 & true 64 magic
+    Wanted result : false
+*/
+TEST magic_32_64_bad32() {
+    const char* fakelog =
+        "lmao[1234]: X BlahBlahEngine:key1=value1,key2=value2,Weird Comment -> Like ScreenSaver:";
+    uint32_t magiclmao = 0xdeadbeef;
+    uint64_t magicblahblah = 0x68616c4268616c42;
+    bool result = check_MAGIC_32_64(&fakelog, magiclmao, magicblahblah);
+    ASSERT_EQ(false, result);
+    PASS();
+}
+
+/*
+    Verify behavior true 32 & bad 64 magic
+    Wanted result : false
+*/
+TEST magic_32_64_bad64() {
+    const char* fakelog =
+        "lmao[1234]: X BlahBlahEngine:key1=value1,key2=value2,Weird Comment -> Like ScreenSaver:";
+    uint32_t magiclmao = 0x6f616d6c;
+    uint64_t magicblahblah = 0xdeadbeefdeadbabe;
+    bool result = check_MAGIC_32_64(&fakelog, magiclmao, magicblahblah);
+    ASSERT_EQ(false, result);
+    PASS();
+}
+
+/*
+    Verify behavior when log is not enough to be uint64_t
+    Wanted result : false
+*/
+TEST magic_32_64_not_enough_log() {
+    const char* fakelog = "x[1]: W Nothing";
+    uint32_t magiclmao = 0x6f616d6c;
+    uint64_t magicblahblah = 0xdeadbeefdeadbabe;
+    bool result = check_MAGIC_32_64(&fakelog, magiclmao, magicblahblah);
+    ASSERT_EQ(false, result);
+    PASS();
+}
+
+
+SUITE(suite_check_magic) {
+    RUN_TEST(magic_32_64_normal);
+    RUN_TEST(magic_32_64_bad32);
+    RUN_TEST(magic_32_64_bad64);
+    RUN_TEST(magic_32_64_not_enough_log);
 }
 
 /* Add definitions that need to be in the test runner's main file. */
@@ -362,8 +544,9 @@ GREATEST_MAIN_DEFS();
 
 int main(int argc, char** argv) {
     GREATEST_MAIN_BEGIN();      /* command-line arguments, initialization. */
-    //~ RUN_SUITE(suite_substring);
-    //~ RUN_SUITE(suite_return_substring);
+    RUN_SUITE(suite_substring);
+    RUN_SUITE(suite_return_substring);
     RUN_SUITE(suite_extract_data);
+    RUN_SUITE(suite_check_magic);
     GREATEST_MAIN_END();        /* display results */
 }
