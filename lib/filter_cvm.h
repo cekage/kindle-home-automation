@@ -18,6 +18,12 @@
 
     Then filters with a expensive regex (which can be avoided in fact)
     and then (for example) extracts room / asin from SupplementarInfoBox
+
+    Don't forget, enabling cvm log in read_fifo needs that syslog-ng
+    redirects cvm log to read_fifo.
+    In a certain way, read_fifo can really handle all your logs, not only
+    cvm and powerd or other provided with this program.
+
 */
 
 #define _GNU_SOURCE
@@ -83,7 +89,7 @@ void process_BookletManager(const char** line) {
             char* to;
             char* url_request = NULL;
             extractdata_only_2_keys(line, &from, &to);
-            if (-1 != asprintf(&url_request, "?from=%s&to=%s", from,to)) {
+            if (-1 != asprintf(&url_request, "?from=%s&to=%s", from, to)) {
                 do_http_request(url_request);
                 free(url_request);
             } else {

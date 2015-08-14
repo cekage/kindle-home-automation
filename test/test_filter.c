@@ -577,6 +577,20 @@ SUITE(suite_check_magic) {
     RUN_TEST(magic_64_64_masked_normal);
 }
 
+TEST check_regex_normal() {
+    const char* fakelog =
+        "powerd[1234]: I lipc:evts:name=outOfScreenSaver, origin=com.lab126.powerd, fparam=1:Event sent";
+    const char* regexp_for_log =
+        "lipc:evts:name=.*, origin=com.lab126.powerd, fparam=.:Event sent$";
+    bool result = check_regexp(&fakelog, &regexp_for_log);
+    ASSERT_EQ(true, result);
+    PASS();
+}
+
+SUITE(suite_check_regexp) {
+    RUN_TEST(check_regex_normal);
+}
+
 /* Add definitions that need to be in the test runner's main file. */
 GREATEST_MAIN_DEFS();
 
@@ -586,5 +600,6 @@ int main(int argc, char** argv) {
     RUN_SUITE(suite_return_substring);
     RUN_SUITE(suite_extract_data);
     RUN_SUITE(suite_check_magic);
+    RUN_SUITE(suite_check_regexp);
     GREATEST_MAIN_END();        /* display results */
 }

@@ -18,6 +18,11 @@
 
     For unit testing it may be a good idea to isolate all checks.
 
+    Don't forget, enabling powerd log in read_fifo needs that syslog-ng
+    redirects powerd log to read_fifo.
+    In a certain way, read_fifo can really handle all your logs, not only
+    cvm and powerd.
+
 */
 
 #define _GNU_SOURCE
@@ -47,8 +52,8 @@ void process_lipcevts(const char** line) {
     const uint64_t MAGIC = 0x7476653a6370696c;
     if (strlen(*line) > 4 &&
             check_MAGIC_64_64_masked(line,
-                                     MAGIC_POWERD,0x00FFFFFFFFFFFFFF,
-                                     MAGIC,0xFFFFFFFFFFFFFFFF)) {
+                                     MAGIC_POWERD, 0x00FFFFFFFFFFFFFF,
+                                     MAGIC, 0xFFFFFFFFFFFFFFFF)) {
         const char* regexp_for_log =
             "lipc:evts:name=.*, origin=com.lab126.powerd, fparam=.:Event sent$";
         (void)printf("\n process_lipcevts MAGIC detected");
@@ -57,7 +62,7 @@ void process_lipcevts(const char** line) {
             char* origin;
             char* fp;
             char* url_request = NULL;
-            extractdata_only_3_keys(line, &name, &origin,&fp);
+            extractdata_only_3_keys(line, &name, &origin, &fp);
             if (-1 != asprintf(&url_request, "?screensaver=%s", name)) {
                 //~ (void)printf("url_request=%s",url_request);
                 do_http_request(url_request);
