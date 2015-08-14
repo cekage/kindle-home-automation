@@ -47,6 +47,7 @@ TEST substring_simple_ptr() {
 /*
     Verify trivial usage, with no trap and with array as destination
     Wanted result : a string
+    Be carefull of freeing ptr after usage.
 */
 TEST substring_simple_array() {
     const char* abcazerty = "abc+azerty=1";
@@ -69,7 +70,7 @@ TEST substring_inverted() {
     const char* abcazerty = "abc+azerty=1";
     int cmp;
     char* azerty;
-    asprintf(&azerty, STR_UNTOUCHED);
+    (void)asprintf(&azerty, STR_UNTOUCHED);
     (void)extract_substring((const char**)&abcazerty, &azerty, '=', '+');
     cmp = strcmp(azerty, STR_UNTOUCHED);
     free(azerty);
@@ -78,7 +79,7 @@ TEST substring_inverted() {
 }
 
 /*
-    Verify trivial usage, with key_start absent of the searched string
+    Verify with key_start absent of the searched string
     Wanted result : untouched
 */
 TEST substring_missing_start() {
@@ -169,7 +170,7 @@ SUITE(suite_substring) {
 }
 
 /*
-    Verify trivial usage
+    Verify function takes the right key_end when is multiple times in src.
     Wanted result : ptr to the first key_end after key_start
 */
 TEST return_substring_simple() {
@@ -184,8 +185,9 @@ TEST return_substring_simple() {
 }
 
 
-/*  Verify trivial usage
-    Wanted result : ptr to the first end after to
+/*
+    Verify behavior when both key_start and key_stop are missing.
+    Wanted result : NULL
 */
 TEST return_substring_missing() {
     const char* abcazerty = "abc+azerty=1";
@@ -196,6 +198,10 @@ TEST return_substring_missing() {
     PASS();
 }
 
+/*
+    Verify behavior when key_start & key_end are identical
+    Wanted result : ptr to the first key_end after the first Key_start
+*/
 TEST return_substring_identical() {
     const char* abcazerty = "abc+azerty=1";
     int cmp;
@@ -207,6 +213,10 @@ TEST return_substring_identical() {
     PASS();
 }
 
+/*
+    Verify behavior when key_start is immediatly followed by key_end
+    Wanted result : ptr to the first key_end after the first Key_start
+*/
 TEST return_substring_contiguous() {
     const char* abcazerty = "abc+azerty=1";
     int cmp;
@@ -218,6 +228,10 @@ TEST return_substring_contiguous() {
     PASS();
 }
 
+/*
+    Verify behavior when key_start did'nt exist in source but key_end is in.
+    Wanted result : NULL
+*/
 TEST return_substring_nostart() {
     const char* abcazerty = "abc+azerty=1";
     char* azerty = NULL;
@@ -226,6 +240,10 @@ TEST return_substring_nostart() {
     free(azerty);
     PASS();
 }
+/*
+    Verify behavior when key_start exists but key_end is missing.
+    Wanted result : NULL
+*/
 TEST return_substring_noend() {
     const char* abcazerty = "abc+azerty=1";
     char* azerty = NULL;
@@ -244,12 +262,108 @@ SUITE(suite_return_substring) {
     RUN_TEST(return_substring_noend);
 }
 
+/*
+    Verify normal behavior.
+    Wanted result : value1 and value2 with expected values.
+*/
+TEST extract_data_normal() {
+    const char* fakelog = "daemon[pid]: X BlahBlahEngine:key1=value1,key2=value2:";
+    char* value1 = NULL;
+    char* value2 = NULL;
+    int cmp;
+    extractdata_only_2_keys(&fakelog, &value1, &value2);
+    cmp = strcmp(value1,"value1");
+    ASSERT_EQ(0, cmp);
+    cmp = strcmp(value2,"value2");
+    ASSERT_EQ(0, cmp);
+    free(value2);
+    free(value1);
+    PASS();
+}
+
+/*
+    Verify behavior if last colon is missing.
+    Wanted result : value1 correct and value2 untouched (so NULL);
+*/
+TEST extract_data_missing_end_colon() {
+    const char* fakelog = "daemon[pid]: X BlahBlahEngine:key1=value1,key2=value2";
+    char* value1 = NULL;
+    char* value2 = NULL;
+    int cmp;
+    extractdata_only_2_keys(&fakelog, &value1, &value2);
+    cmp = strcmp(value1,"value1");
+    ASSERT_EQ(0, cmp);
+    free(value1);
+    ASSERT_EQ(NULL, value2);
+    free(value2);
+    PASS();
+}
+
+/*
+    Verify behavior if there is more than expected values
+    Wanted result : first key ok, second key contains excessive characters.
+*/
+TEST extract_data_excessive_keys() {
+    const char* fakelog = "daemon[pid]: X BlahBlahEngine:key1=value1,key2=value2,key3=value3:";
+    char* value1 = NULL;
+    char* value2 = NULL;
+    int cmp;
+    extractdata_only_2_keys(&fakelog, &value1, &value2);
+    cmp = strcmp(value1,"value1");
+    ASSERT_EQ(0, cmp);
+    free(value1);
+    cmp = strcmp(value2,"value2,key3=value3");
+    ASSERT_EQ(0, cmp);
+    free(value2);
+    PASS();
+}
+
+/*
+    Verify behavior if there is not enough key=value.
+    Wanted result : both value1 and value2 equals NULL
+*/
+TEST extract_data_not_enough_keys() {
+    const char* fakelog = "daemon[pid]: X BlahBlahEngine:key1=value1:";
+    char* value1 = NULL;
+    char* value2 = NULL;
+    extractdata_only_2_keys(&fakelog, &value1, &value2);
+    ASSERT_EQ(NULL, value1);
+    ASSERT_EQ(NULL, value2);
+    PASS();
+}
+
+/*
+    Verify behavior if there is not enough key=value
+    Wanted result : both value1 and value2 equals NULL
+*/
+TEST extract_data_not_enough_keys_but_unstructured_comment() {
+    const char* fakelog = "daemon[pid]: X BlahBlahEngine:key1=value1,Weird Comment -> Like ScreenSaver:";
+    char* value1 = NULL;
+    char* value2 = NULL;
+    int cmp;
+    extractdata_only_2_keys(&fakelog, &value1, &value2);
+    cmp = strcmp(value1,"value1");
+    ASSERT_EQ(0, cmp);
+    free(value1);
+    ASSERT_EQ(NULL, value2);
+    PASS();
+}
+
+SUITE(suite_extract_data) {
+    RUN_TEST(extract_data_normal);
+    RUN_TEST(extract_data_missing_end_colon);
+    RUN_TEST(extract_data_excessive_keys);
+    RUN_TEST(extract_data_not_enough_keys);
+    RUN_TEST(extract_data_not_enough_keys_but_unstructured_comment);
+}
+
 /* Add definitions that need to be in the test runner's main file. */
 GREATEST_MAIN_DEFS();
 
 int main(int argc, char** argv) {
     GREATEST_MAIN_BEGIN();      /* command-line arguments, initialization. */
-    RUN_SUITE(suite_substring);
-    RUN_SUITE(suite_return_substring);
+    //~ RUN_SUITE(suite_substring);
+    //~ RUN_SUITE(suite_return_substring);
+    RUN_SUITE(suite_extract_data);
     GREATEST_MAIN_END();        /* display results */
 }
