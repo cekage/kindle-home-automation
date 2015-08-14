@@ -94,16 +94,17 @@ void extractdata_only_3_keys(const char** line, char** key1,
 
 bool check_MAGIC_32_64(const char** line,
                        const uint32_t magic32, const uint64_t magic64) {
-    return check_MAGIC_32_64_masked(line, magic32, 0xFFFFFFFF, magic64,
-                                    0xFFFFFFFFFFFFFFFF);
+    return check_MAGIC_64_64_masked(line, magic32, 0xFFFFFFFF,
+                                    magic64, 0xFFFFFFFFFFFFFFFF);
 }
 
 bool check_MAGIC_32_64_masked(const char** line,
                               const uint32_t magic32, const uint32_t mask32,
                               const uint64_t magic64, const uint64_t mask64) {
+    perror("check_MAGIC_32_64_masked deprecated. use check_MAGIC_64_64_masked()");
     bool result = false;
     //~ (void)printf("cmp %lx to %lx\n", magic1 & mask1,
-                 //~ *((unsigned long*) *line)& mask1);
+    //~ *((unsigned long*) *line)& mask1);
     if ((magic32 & mask32) == (*((uint32_t*) *line)& mask32)) {
         char* cursor;
         // MAGIC is 4 chars after the colon "prog.*[pid]: . MAGIC64?.*"
