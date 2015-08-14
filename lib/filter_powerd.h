@@ -14,10 +14,10 @@
     0. You just DO WHAT THE FUCK YOU WANT TO.
 
     Illustrate filter.h, in this example we first check "powerd[" by MAGIC
-    then check "Suppleme"ntarInfoBox by MAGIC too.
+    then check 'lipc:evt's by MAGIC too.
 
-    Then filter with a expensive regex (which can be avoided in fact)
-    and then extract room / asin from SupplementarInfoBox
+    For unit testing it may be a good idea to isolate all checks.
+
 */
 
 #define _GNU_SOURCE
