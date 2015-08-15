@@ -56,6 +56,9 @@ void process_lipcevts(const char** line) {
                                      MAGIC, 0xFFFFFFFFFFFFFFFF)) {
         const char* regexp_for_log =
             "lipc:evts:name=.*, origin=com.lab126.powerd, fparam=.:Event sent$";
+        /*
+            This printf is just for the demo,
+        */
         (void)printf("\n process_lipcevts MAGIC detected");
         if (check_regexp(line, &regexp_for_log)) {
             char* name;
