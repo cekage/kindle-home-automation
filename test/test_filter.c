@@ -591,6 +591,79 @@ SUITE(suite_check_regexp) {
     RUN_TEST(check_regex_normal);
 }
 
+TEST check_regex_va_normal() {
+    const char* fakelog =
+        "powerd[1234]: I lipc:evts:name=outOfScreenSaver, origin=com.lab126.powerd, fparam=1:Event sent";
+    const char* regexp_for_log =
+        "lipc:evts:name=(.*), origin=com.lab126.powerd, fparam=(.+):Event sent$";
+    char* name = NULL;
+    char* fparam = NULL;
+    int cmp;
+    bool result = check_regexp_va(&fakelog, &regexp_for_log,
+                                  PREFIX_WITH_COUNT(&name, &fparam));
+    ASSERT(result);
+    cmp = strcmp("outOfScreenSaver", name);
+    ASSERT_EQ(0, cmp);
+    cmp = strcmp("1", fparam);
+    ASSERT_EQ(0, cmp);
+    free(fparam);
+    free(name);
+    PASS();
+}
+
+TEST check_regex_va_not_enough_values_asked() {
+    const char* fakelog =
+        "powerd[1234]: I lipc:evts:name=outOfScreenSaver, origin=com.lab126.powerd, fparam=1:Event sent";
+    const char* regexp_for_log =
+        "lipc:evts:name=(.*), origin=com.lab126.powerd, fparam=(.+):Event sent$";
+    char* name = NULL;
+    char* fparam = NULL;
+    int cmp;
+    bool result = check_regexp_va(&fakelog, &regexp_for_log,
+                                  PREFIX_WITH_COUNT(&name));
+    ASSERT(result);
+    cmp = strcmp("outOfScreenSaver", name);
+    ASSERT_EQ(0, cmp);
+    ASSERT_EQ(NULL, fparam);
+    free(fparam);
+    free(name);
+    PASS();
+}
+
+
+
+TEST check_regex_va_too_much_values_asked() {
+    const char* fakelog =
+        "powerd[1234]: I lipc:evts:name=outOfScreenSaver, origin=com.lab126.powerd, fparam=1:Event sent";
+    const char* regexp_for_log =
+        "lipc:evts:name=(.*), origin=com.lab126.powerd, fparam=(.+):Event sent$";
+    char* name = NULL;
+    char* fparam = NULL;
+    char* garbage1 = NULL;
+    char* garbage2 = NULL;
+    int cmp;
+    bool result = check_regexp_va(&fakelog, &regexp_for_log,
+                                  PREFIX_WITH_COUNT(&name, &fparam, &garbage1, &garbage2));
+    ASSERT(result);
+    cmp = strcmp("outOfScreenSaver", name);
+    ASSERT_EQ(0, cmp);
+    cmp = strcmp("1", fparam);
+    ASSERT_EQ(0, cmp);
+    ASSERT_EQ(NULL, garbage1);
+    ASSERT_EQ(NULL, garbage2);
+    free(garbage2);
+    free(garbage1);
+    free(fparam);
+    free(name);
+    PASS();
+}
+
+SUITE(suite_check_regexp_va) {
+    RUN_TEST(check_regex_va_normal);
+    RUN_TEST(check_regex_va_not_enough_values_asked);
+    RUN_TEST(check_regex_va_too_much_values_asked);
+}
+
 /* Add definitions that need to be in the test runner's main file. */
 GREATEST_MAIN_DEFS();
 
@@ -601,5 +674,6 @@ int main(int argc, char** argv) {
     RUN_SUITE(suite_extract_data);
     RUN_SUITE(suite_check_magic);
     RUN_SUITE(suite_check_regexp);
+    RUN_SUITE(suite_check_regexp_va);
     GREATEST_MAIN_END();        /* display results */
 }
