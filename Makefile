@@ -24,6 +24,7 @@ astyle:
 	 		--indent-col1-comments --min-conditional-indent=0 --pad-oper \
 	 		--align-pointer=type --align-reference=type --add-one-line-brackets \
 	 		--delete-empty-lines --pad-header  $(TGT).c
+	astyle -k1 -W1 -A2 -s4 -j -xc -K -Y -p -H -xe -xy -q -xp -xL -z2 -c -xC80 $(TGT).c lib/filter*.h test/*.c
 
 init:
 	sync
