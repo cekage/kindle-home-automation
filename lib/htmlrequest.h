@@ -62,12 +62,7 @@ void get_ip(const char* host, char** dest) {
         perror("get_ip() Can't calloc");
     }
 }
-//~ static char* build_get_query(const char* host, const char* page) {
-//~ char* query;
-//~ const char* tpl = "GET /%s HTTP/1.0\r\nHost: %s\r\nUser-Agent: %s\r\n\r\n";
-//~ (void)asprintf(&query, tpl, page, host, USERAGENT);
-//~ return query;
-//~ }
+
 static void print_http_response(const int socket) {
     const size_t MAXCOUNT = 2048;
     char* received_data = calloc(sizeof(char), MAXCOUNT);
