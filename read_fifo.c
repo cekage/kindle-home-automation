@@ -58,5 +58,5 @@ static void get_stdin_line(void) {
 
 int main(int argc, char* argv[]) {
     get_stdin_line();
-    exit(0);
+    exit(EXIT_SUCCESS);
 }
