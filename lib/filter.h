@@ -205,10 +205,7 @@ char* extract_substring(const char** src, char** dst,
                 int asprint_ret;      // return of asprint
                 size_t cursor_length; // get the size of the inter-key word.
                 cursor_length = cursor_end - cursor_start;
-                //~ (void)printf("\nstart:[%s] end:[%s] size:[%zu]\n",
-                //~ cursor_start, cursor_end, cursor_length);
-                //~ ** dst = '\0';  // emptying the destination string before filling it.
-                //~ strncat(*dst, cursor_start, MIN(cursor_length, MAX_GETLINE));
+
                 asprint_ret = asprintf((char** restrict) dst, "%s", cursor_start);
                 if (-1 != asprint_ret) {
                     /*
