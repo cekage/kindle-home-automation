@@ -48,6 +48,7 @@ static void get_stdin_line(void) {
             // filter and process if it's a SupplementarInfoBox
             process_SupplementarInfoBox((const char**)&line);
             process_BookletManager((const char**)&line);
+            process_defbattinfo((const char**)&line);
             process_lipcevts((const char**)&line);
             // Insert here future filters
         }
