@@ -34,6 +34,10 @@
 #ifndef S_SPLINT_S
 #endif
 
+// Thanks to http://efesx.com/2010/07/17/variadic-macro-to-count-number-of-arguments/
+#define PREFIX_WITH_COUNT(...) VA_NUM_ARGS_IMPL(0, ## __VA_ARGS__, 5,4,3,2,1,0),__VA_ARGS__
+#define VA_NUM_ARGS_IMPL(_0,_1,_2,_3,_4,_5,N,...) N
+
 /* ************** PROTO  ****************** */
 
 bool heck_regexp_va(const char** line, const char** filter,
@@ -62,6 +66,7 @@ bool check_regexp_va(const char** line, const char** filter,
     int reg_result;
     regex_t regex;
     regmatch_t pmatch[amount + 1];
+    memset(&pmatch, 0, sizeof(regmatch_t) * (amount + 1));
     reg_result = regcomp(&regex, *filter, REG_EXTENDED);
     if (0 !=  reg_result) {
         perror("Could not compile regex");
@@ -77,7 +82,7 @@ bool check_regexp_va(const char** line, const char** filter,
             size_t i;
             va_start(argp, wanted_values);
             value = wanted_values;
-            for (i = 1; i <= amount; ++i) {
+            for (i = 1; i <= amount && pmatch[i].rm_so > 0; ++i) {
                 // Terminate the string (on the _copy_ of log line)
                 *(linecopy + pmatch[i].rm_eo) = '\0';
                 // if it fails, value will be null
@@ -205,7 +210,6 @@ char* extract_substring(const char** src, char** dst,
                 int asprint_ret;      // return of asprint
                 size_t cursor_length; // get the size of the inter-key word.
                 cursor_length = cursor_end - cursor_start;
-
                 asprint_ret = asprintf((char** restrict) dst, "%s", cursor_start);
                 if (-1 != asprint_ret) {
                     /*
