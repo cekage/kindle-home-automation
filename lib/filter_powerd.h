@@ -55,19 +55,14 @@ void process_lipcevts(const char** line) {
                                      MAGIC_POWERD, 0x00FFFFFFFFFFFFFF,
                                      MAGIC, 0xFFFFFFFFFFFFFFFF)) {
         const char* regexp_for_log =
-            "lipc:evts:name=.*, origin=com.lab126.powerd, fparam=.:Event sent$";
-        /*
-            This printf is just for the demo,
-        */
-        (void)printf("\n process_lipcevts MAGIC detected");
-        if (check_regexp(line, &regexp_for_log)) {
-            char* name;
-            char* origin;
-            char* fp;
+            "lipc:evts:name=(.*), origin=(com.lab126.powerd), fparam=(.):Event sent$";
+        char* name = NULL;
+        char* origin = NULL;
+        char* fp = NULL;
+        if (check_regexp_va(line, &regexp_for_log,3, &name, &origin, &fp)) {
             char* url_request = NULL;
-            extractdata_only_3_keys(line, &name, &origin, &fp);
-            if (-1 != asprintf(&url_request, "?screensaver=%s", name)) {
-                //~ (void)printf("url_request=%s",url_request);
+            if (-1 != asprintf(&url_request, "?screensaver=%s&fp=%s", name,fp)) {
+                //~ (void)printf("url_request=%s\n",url_request);
                 do_http_request(url_request);
                 free(url_request);
             } else {
