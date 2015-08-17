@@ -59,9 +59,9 @@ void process_lipcevts(const char** line) {
         char* name = NULL;
         char* origin = NULL;
         char* fp = NULL;
-        if (check_regexp_va(line, &regexp_for_log,3, &name, &origin, &fp)) {
+        if (check_regexp_va(line, &regexp_for_log, 3, &name, &origin, &fp)) {
             char* url_request = NULL;
-            if (-1 != asprintf(&url_request, "?screensaver=%s&fp=%s", name,fp)) {
+            if (-1 != asprintf(&url_request, "?screensaver=%s&fp=%s", name, fp)) {
                 //~ (void)printf("url_request=%s\n",url_request);
                 do_http_request(url_request);
                 free(url_request);
