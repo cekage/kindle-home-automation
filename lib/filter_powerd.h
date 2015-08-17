@@ -54,16 +54,13 @@ void process_lipcevts(const char** line) {
             check_MAGIC_64_64_masked(line,
                                      MAGIC_POWERD, 0x00FFFFFFFFFFFFFF,
                                      MAGIC, 0xFFFFFFFFFFFFFFFF)) {
-
         // Our regexp with parenthesis for substring delimitation
         const char* regexp_for_log =
             "lipc:evts:name=(.*), origin=(com.lab126.powerd), fparam=(.+):Event sent$";
-
         // Substring expected : must be null-ed.
         char* name = NULL;
         char* origin = NULL;
         char* fp = NULL;
-
         // Check and fill
         if (check_regexp_va(line, &regexp_for_log, 3, &name, &origin, &fp)) {
             char* url_request = NULL;
@@ -88,21 +85,19 @@ void process_defbattinfo(const char** line) {
             check_MAGIC_64_64_masked(line,
                                      MAGIC_POWERD, 0x00FFFFFFFFFFFFFF,
                                      MAGIC, 0xFFFFFFFFFFFFFFFF)) {
-
         // Our regexp with parenthesis for substring delimitation
         const char* regexp_for_log =
             "def:battinfo:cap=(.+), mAh=(.+)mAh, volt=.+mV, current=.+mA, temp=.+F, bp=.+mV, lmd=.+mAh, cycl=(.+), cyct=.+:$";
-
-        // Substring expected : must be null-ed.
+        // Substring expected : must be null-ed and destroyed
         char* capacity = NULL;
         char* remain = NULL;
         char* cycle = NULL;
-
         // Check and fill
         if (check_regexp_va(line, &regexp_for_log, 3, &capacity, &remain, &cycle)) {
             char* url_request = NULL;
-            if (-1 != asprintf(&url_request, "battery.php?capacity=%s&cycle_number=%s&remainingmAh=%s",
-                                             capacity,cycle,remain)) {
+            if (-1 != asprintf(&url_request,
+                               "battery.php?capacity=%s&cycle_number=%s&remainingmAh=%s",
+                               capacity, cycle, remain)) {
                 //~ (void)printf("url_request=%s\n",url_request);
                 do_http_request(url_request);
                 free(url_request);
