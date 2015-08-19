@@ -37,7 +37,7 @@ cppcheck:
 
 splint:
 	#splint +posixstrictlib -unqualifiedtrans -compdef -retvalint $(TGT).c
-	splint -compdestroy +posixstrictlib -unqualifiedtrans -compdef -globs -formatcode $(TGT).c
+	splint -compdestroy +posixstrictlib -unqualifiedtrans -compdef -globs -formatcode -preproc $(TGT).c
 
 test: build
 	valgrind -v --track-origins=yes --leak-check=full --error-exitcode=1 ./$(TGT) < Docs/kindle.log > /dev/null 2>&1
