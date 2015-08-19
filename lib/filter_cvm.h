@@ -56,14 +56,13 @@ void process_SupplementarInfoBox(const char** line) {
     if (strlen(*line) > 4 &&
             check_MAGIC_32_64(line, MAGIC_CVM, MAGIC)) {
         const char* regexp_for_log =
-            "SupplementarInfoBox:QUICK_LOOKUP:asin=.+,word=.+:$";
-        if (check_regexp(line, &regexp_for_log)) {
-            char* room;
-            char* asin;
+            "SupplementarInfoBox:QUICK_LOOKUP:asin=(.+),word=(.+):$";
+        char* room;
+        char* asin;
+        if (check_regexp_va(line, &regexp_for_log,
+                            PREFIX_WITH_COUNT(&asin, &room))) {
             char* url_request = NULL;
-            extractdata_only_2_keys(line, &asin, &room);
             if (-1 != asprintf(&url_request, "?toggle=%s", room)) {
-                //~ (void)printf("url_request=%s",url_request);
                 do_http_request(url_request);
                 free(url_request);
             } else {
@@ -83,12 +82,12 @@ void process_BookletManager(const char** line) {
     if (strlen(*line) > 47 &&
             check_MAGIC_32_64(line, MAGIC_CVM, MAGIC)) {
         const char* regexp_for_log =
-            "BookletManager:SwitchingBooklets:from=.+,to=.+:$";
-        if (check_regexp(line, &regexp_for_log)) {
-            char* from;
-            char* to;
+            "BookletManager:SwitchingBooklets:from=(.+),to=(.+):$";
+        char* from;
+        char* to;
+        if (check_regexp_va(line, &regexp_for_log,
+                            PREFIX_WITH_COUNT(&from, &to))) {
             char* url_request = NULL;
-            extractdata_only_2_keys(line, &from, &to);
             if (-1 != asprintf(&url_request, "?from=%s&to=%s", from, to)) {
                 do_http_request(url_request);
                 free(url_request);
