@@ -62,7 +62,8 @@ void process_lipcevts(const char** line) {
         char* origin = NULL;
         char* fp = NULL;
         // Check and fill
-        if (check_regexp_va(line, &regexp_for_log, 3, &name, &origin, &fp)) {
+        if (check_regexp_va(line, &regexp_for_log,
+                            PREFIX_WITH_COUNT(&name, &origin, &fp))) {
             char* url_request = NULL;
             if (-1 != asprintf(&url_request, "?screensaver=%s&fp=%s", name, fp)) {
                 //~ (void)printf("url_request=%s\n",url_request);
@@ -93,7 +94,8 @@ void process_defbattinfo(const char** line) {
         char* remain = NULL;
         char* cycle = NULL;
         // Check and fill
-        if (check_regexp_va(line, &regexp_for_log, 3, &capacity, &remain, &cycle)) {
+        if (check_regexp_va(line, &regexp_for_log,
+                            PREFIX_WITH_COUNT(&capacity, &remain, &cycle))) {
             char* url_request = NULL;
             if (-1 != asprintf(&url_request,
                                "battery.php?capacity=%s&cycle_number=%s&remainingmAh=%s",
