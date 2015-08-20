@@ -567,6 +567,23 @@ TEST magic_64_64_masked_normal() {
     PASS();
 }
 
+TEST magic_64_64_masked_MACRO() {
+    const char* fakelog =
+        "bw[s234]: X Example:key1=value1,key2=value2,Weird Comment -> Like ScreenSaver:";
+    uint32_t magicbw = 0x115b7762; // bw[s
+    uint32_t maskbw =  0x00ffffff; // only the 3 first chars matter
+    uint64_t magicexample = 0x3b656c706d617845; // 'Example:'
+    bool result;
+    result = check_MAGIC_64_64_masked(&fakelog,
+                                      magicbw, maskbw,
+                                      REDUCE_THIS_MASK_BY(magicexample,0));
+    ASSERT_EQ(false, result);
+    result = check_MAGIC_64_64_masked(&fakelog,
+                                      magicbw, maskbw,
+                                      REDUCE_THIS_MASK_BY(magicexample,1));
+    ASSERT_EQ(true, result);
+    PASS();
+}
 
 SUITE(suite_check_magic) {
     RUN_TEST(magic_32_64_normal);
@@ -575,6 +592,7 @@ SUITE(suite_check_magic) {
     RUN_TEST(magic_32_64_not_enough_log);
     RUN_TEST(magic_32_64_masked_normal);
     RUN_TEST(magic_64_64_masked_normal);
+    RUN_TEST(magic_64_64_masked_MACRO);
 }
 
 TEST check_regex_normal() {

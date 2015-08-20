@@ -35,8 +35,18 @@
 #endif
 
 // Thanks to http://efesx.com/2010/07/17/variadic-macro-to-count-number-of-arguments/
-#define PREFIX_WITH_COUNT(...) VA_NUM_ARGS_IMPL(0, ## __VA_ARGS__, 5,4,3,2,1,0),__VA_ARGS__
-#define VA_NUM_ARGS_IMPL(_0,_1,_2,_3,_4,_5,N,...) N
+/*
+    This macro safely (up to 6…) prefix va_arg declaration with the amount of
+    va_arg parameters. For example :
+      PREFIX_WITH_COUNT(&a, &b, &c)      is equal to      3, &a, &b, &c
+*/
+#define PREFIX_WITH_COUNT(...) VA_NUM_ARGS_IMPL(0, __VA_ARGS__, 6, 5, 4, 3, 2, 1, 0), __VA_ARGS__
+#define VA_NUM_ARGS_IMPL(_0, _1, _2, _3, _4, _5, _6, N,...) N
+
+
+#define MASK_64B 0xFFFFFFFFFFFFFFFF
+#define SUPPRES_FROM_MAGIC(x) MASK_64B >> 8*x
+#define REDUCE_THIS_MASK_BY(mask,by) mask, SUPPRES_FROM_MAGIC(by)
 
 /* ************** PROTO  ****************** */
 
@@ -109,14 +119,13 @@ bool check_MAGIC_64_64_masked(const char** line,
                               const uint64_t magic1, const uint64_t mask1,
                               const uint64_t magic2, const uint64_t mask2) {
     bool result = false;
-    //~ (void)printf("cmp %lx to %lx\n",magic1 & mask1,*((unsigned long*) *line)& mask1);
+    //~ (void)printf("\ncmp %lx to %lx\n",magic1 & mask1,*((unsigned long*) *line)& mask1);
     if ((magic1 & mask1) == (*((uint64_t*) *line)& mask1)) {
         //~ (void)printf("magic1/mask1 is ok\n");
         char* cursor;
         // MAGIC is 4 chars after the colon "prog.*[pid]: . MAGIC64?.*"
         cursor = strchr(*line, ':') + 4;
-        //~ (void)printf("\OKx %"PRIx64" vs %"PRIx64" ",
-        //~ (uint64_t) *line, magic64 );
+        //~ (void)printf("\ncmp %016lx to %016lx\n",magic2 & mask2,*((unsigned long*) cursor)& mask2);
         result = ((magic2 & mask2) == (*((uint64_t*) cursor) & mask2));
     }
     return result;

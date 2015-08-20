@@ -52,8 +52,8 @@ void process_lipcevts(const char** line) {
     const uint64_t MAGIC = 0x7476653a6370696c;
     if (strlen(*line) > 4 &&
             check_MAGIC_64_64_masked(line,
-                                     MAGIC_POWERD, 0x00FFFFFFFFFFFFFF,
-                                     MAGIC, 0xFFFFFFFFFFFFFFFF)) {
+                                     REDUCE_THIS_MASK_BY(MAGIC_POWERD, 1),
+                                     REDUCE_THIS_MASK_BY(MAGIC, 0))) {
         // Our regexp with parenthesis for substring delimitation
         const char* regexp_for_log =
             "lipc:evts:name=(.*), origin=(com.lab126.powerd), fparam=(.+):Event sent$";
@@ -84,8 +84,8 @@ void process_defbattinfo(const char** line) {
     const uint64_t MAGIC = 0x747461623a666564;
     if (strlen(*line) > 100 &&
             check_MAGIC_64_64_masked(line,
-                                     MAGIC_POWERD, 0x00FFFFFFFFFFFFFF,
-                                     MAGIC, 0xFFFFFFFFFFFFFFFF)) {
+                                     REDUCE_THIS_MASK_BY(MAGIC_POWERD, 1),
+                                     REDUCE_THIS_MASK_BY(MAGIC, 0))) {
         // Our regexp with parenthesis for substring delimitation
         const char* regexp_for_log =
             "def:battinfo:cap=(.+), mAh=(.+)mAh, volt=.+mV, current=.+mA, temp=.+F, bp=.+mV, lmd=.+mAh, cycl=(.+), cyct=.+:$";
