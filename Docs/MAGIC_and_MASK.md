@@ -1,9 +1,53 @@
 
 -----
 
-## Provider LIPC_SEN
+## Provider PMOND
 ```
-#define MAGIC_LIPC_SEN  0x6e65732d6370696c // in string : 'lipc-sen' (8 car)
+#define MAGIC_PMOND  0x5b646e6f6d70 // in string : '  pmond[' (6 car)
+```
+```
+void process_def_exit(const char** line) {
+	const uint64_t MAGIC = 0x746978653a666564; // in string : 'def:exit' (8 car)
+…
+}
+```
+```
+void process_def_gmem(const char** line) {
+	const uint64_t MAGIC = 0x6d656d673a666564; // in string : 'def:gmem' (8 car)
+…
+}
+```
+```
+void process_def_rst_(const char** line) {
+	const uint64_t MAGIC = 0x3a7473723a666564; // in string : 'def:rst:' (8 car)
+…
+}
+```
+```
+void process_def_stop(const char** line) {
+	const uint64_t MAGIC = 0x706f74733a666564; // in string : 'def:stop' (8 car)
+…
+}
+```
+
+-----
+
+## Provider LIPC_DAE
+```
+#define MAGIC_LIPC_DAE  0x6561642d6370696c // in string : 'lipc-dae' (8 car)
+```
+```
+void process_def_term(const char** line) {
+	const uint64_t MAGIC = 0x6d7265743a666564; // in string : 'def:term' (8 car)
+…
+}
+```
+
+-----
+
+## Provider VOLUMD
+```
+#define MAGIC_VOLUMD  0x5b646d756c6f76 // in string : ' volumd[' (7 car)
 ```
 ```
 void process_lipc_evt(const char** line) {
@@ -67,6 +111,12 @@ void process_def_stat(const char** line) {
 }
 ```
 ```
+void process_def_susg(const char** line) {
+	const uint64_t MAGIC = 0x677375733a666564; // in string : 'def:susg' (8 car)
+…
+}
+```
+```
 void process_def_susp(const char** line) {
 	const uint64_t MAGIC = 0x707375733a666564; // in string : 'def:susp' (8 car)
 …
@@ -87,13 +137,406 @@ void process_lipc_evt(const char** line) {
 
 -----
 
+## Provider WALL
+```
+#define MAGIC_WALL  0x5b6c6c6177 // in string : '   wall[' (5 car)
+```
+```
+void process_ll__user(const char** line) {
+	const uint64_t MAGIC = 0x72657375203a6c6c; // in string : 'll: user' (8 car)
+…
+}
+```
+
+-----
+
+## Provider CROND
+```
+#define MAGIC_CROND  0x5b646e6f7263 // in string : '  crond[' (6 car)
+```
+```
+void process_er_root_(const char** line) {
+	const uint64_t MAGIC = 0x20746f6f72205245; // in string : 'ER root ' (8 car)
+…
+}
+```
+```
+void process_me_dispa(const char** line) {
+	const uint64_t MAGIC = 0x617073696420656d; // in string : 'me dispa' (8 car)
+…
+}
+```
+
+-----
+
+## Provider WEBREADE
+```
+#define MAGIC_WEBREADE  0x6564616572626577 // in string : 'webreade' (8 car)
+```
+```
+void process_def_afte(const char** line) {
+	const uint64_t MAGIC = 0x657466613a666564; // in string : 'def:afte' (8 car)
+…
+}
+```
+```
+void process_def_asyn(const char** line) {
+	const uint64_t MAGIC = 0x6e7973613a666564; // in string : 'def:asyn' (8 car)
+…
+}
+```
+```
+void process_def_comm(const char** line) {
+	const uint64_t MAGIC = 0x6d6d6f633a666564; // in string : 'def:comm' (8 car)
+…
+}
+```
+```
+void process_def_proc(const char** line) {
+	const uint64_t MAGIC = 0x636f72703a666564; // in string : 'def:proc' (8 car)
+…
+}
+```
+```
+void process_def_trig(const char** line) {
+	const uint64_t MAGIC = 0x676972743a666564; // in string : 'def:trig' (8 car)
+…
+}
+```
+
+-----
+
+## Provider LIPC_SEN
+```
+#define MAGIC_LIPC_SEN  0x6e65732d6370696c // in string : 'lipc-sen' (8 car)
+```
+```
+void process_def_dbus(const char** line) {
+	const uint64_t MAGIC = 0x737562643a666564; // in string : 'def:dbus' (8 car)
+…
+}
+```
+```
+void process_def_fail(const char** line) {
+	const uint64_t MAGIC = 0x6c6961663a666564; // in string : 'def:fail' (8 car)
+…
+}
+```
+```
+void process_def_open(const char** line) {
+	const uint64_t MAGIC = 0x6e65706f3a666564; // in string : 'def:open' (8 car)
+…
+}
+```
+```
+void process_def_retr(const char** line) {
+	const uint64_t MAGIC = 0x727465723a666564; // in string : 'def:retr' (8 car)
+…
+}
+```
+```
+void process_lipc_con(const char** line) {
+	const uint64_t MAGIC = 0x6e6f633a6370696c; // in string : 'lipc:con' (8 car)
+…
+}
+```
+```
+void process_lipc_ds_(const char** line) {
+	const uint64_t MAGIC = 0x3a73643a6370696c; // in string : 'lipc:ds:' (8 car)
+…
+}
+```
+```
+void process_lipc_evt(const char** line) {
+	const uint64_t MAGIC = 0x7476653a6370696c; // in string : 'lipc:evt' (8 car)
+…
+}
+```
+
+-----
+
+## Provider DROPBEAR
+```
+#define MAGIC_DROPBEAR  0x72616562706f7264 // in string : 'dropbear' (8 car)
+```
+```
+void process_d_passwo(const char** line) {
+	const uint64_t MAGIC = 0x6f77737361702064; // in string : 'd passwo' (8 car)
+…
+}
+```
+```
+void process_ild_conn(const char** line) {
+	const uint64_t MAGIC = 0x6e6e6f6320646c69; // in string : 'ild conn' (8 car)
+…
+}
+```
+```
+void process_ssword_a(const char** line) {
+	const uint64_t MAGIC = 0x612064726f777373; // in string : 'ssword a' (8 car)
+…
+}
+```
+
+-----
+
+## Provider TMD
+```
+#define MAGIC_TMD  0x5b646d74 // in string : '    tmd[' (4 car)
+```
+```
+void process_end_tran(const char** line) {
+	const uint64_t MAGIC = 0x6e6172745f646e65; // in string : 'end_tran' (8 car)
+…
+}
+```
+```
+void process_lipc_ssp(const char** line) {
+	const uint64_t MAGIC = 0x7073733a6370696c; // in string : 'lipc:ssp' (8 car)
+…
+}
+```
+```
+void process_qmgr_new(const char** line) {
+	const uint64_t MAGIC = 0x77656e5f72676d71; // in string : 'qmgr_new' (8 car)
+…
+}
+```
+```
+void process_rate_sta(const char** line) {
+	const uint64_t MAGIC = 0x6174735f65746172; // in string : 'rate_sta' (8 car)
+…
+}
+```
+```
+void process_recomput(const char** line) {
+	const uint64_t MAGIC = 0x7475706d6f636572; // in string : 'recomput' (8 car)
+…
+}
+```
+```
+void process_request_(const char** line) {
+	const uint64_t MAGIC = 0x5f74736575716572; // in string : 'request_' (8 car)
+…
+}
+```
+```
+void process_sendstat(const char** line) {
+	const uint64_t MAGIC = 0x74617473646e6573; // in string : 'sendstat' (8 car)
+…
+}
+```
+```
+void process_start_tr(const char** line) {
+	const uint64_t MAGIC = 0x72745f7472617473; // in string : 'start_tr' (8 car)
+…
+}
+```
+```
+void process_tq_dump_(const char** line) {
+	const uint64_t MAGIC = 0x5f706d75643a7174; // in string : 'tq:dump_' (8 car)
+…
+}
+```
+```
+void process_tq_queue(const char** line) {
+	const uint64_t MAGIC = 0x65756575713a7174; // in string : 'tq:queue' (8 car)
+…
+}
+```
+
+-----
+
+## Provider PHD
+```
+#define MAGIC_PHD  0x5b646870 // in string : '    phd[' (4 car)
+```
+```
+void process_lipc_evt(const char** line) {
+	const uint64_t MAGIC = 0x7476653a6370696c; // in string : 'lipc:evt' (8 car)
+…
+}
+```
+```
+void process_lipc_sip(const char** line) {
+	const uint64_t MAGIC = 0x7069733a6370696c; // in string : 'lipc:sip' (8 car)
+…
+}
+```
+```
+void process_post_tph(const char** line) {
+	const uint64_t MAGIC = 0x6870745f74736f70; // in string : 'post_tph' (8 car)
+…
+}
+```
+```
+void process_sph_comp(const char** line) {
+	const uint64_t MAGIC = 0x706d6f633a687073; // in string : 'sph:comp' (8 car)
+…
+}
+```
+```
+void process_timer_fo(const char** line) {
+	const uint64_t MAGIC = 0x6f663a72656d6974; // in string : 'timer:fo' (8 car)
+…
+}
+```
+```
+void process_timer_no(const char** line) {
+	const uint64_t MAGIC = 0x6f6e3a72656d6974; // in string : 'timer:no' (8 car)
+…
+}
+```
+```
+void process_timer_ph(const char** line) {
+	const uint64_t MAGIC = 0x68703a72656d6974; // in string : 'timer:ph' (8 car)
+…
+}
+```
+```
+void process_timer_re(const char** line) {
+	const uint64_t MAGIC = 0x65723a72656d6974; // in string : 'timer:re' (8 car)
+…
+}
+```
+```
+void process_udp_tph_(const char** line) {
+	const uint64_t MAGIC = 0x3a6870745f706475; // in string : 'udp_tph:' (8 car)
+…
+}
+```
+```
+void process_wait_sig(const char** line) {
+	const uint64_t MAGIC = 0x6769733a74696177; // in string : 'wait:sig' (8 car)
+…
+}
+```
+```
+void process_wait_zzz(const char** line) {
+	const uint64_t MAGIC = 0x7a7a7a3a74696177; // in string : 'wait:zzz' (8 car)
+…
+}
+```
+
+-----
+
+## Provider LIPC_GET
+```
+#define MAGIC_LIPC_GET  0x7465672d6370696c // in string : 'lipc-get' (8 car)
+```
+```
+void process_def_dbus(const char** line) {
+	const uint64_t MAGIC = 0x737562643a666564; // in string : 'def:dbus' (8 car)
+…
+}
+```
+```
+void process_def_fail(const char** line) {
+	const uint64_t MAGIC = 0x6c6961663a666564; // in string : 'def:fail' (8 car)
+…
+}
+```
+```
+void process_def_open(const char** line) {
+	const uint64_t MAGIC = 0x6e65706f3a666564; // in string : 'def:open' (8 car)
+…
+}
+```
+```
+void process_lipc_con(const char** line) {
+	const uint64_t MAGIC = 0x6e6f633a6370696c; // in string : 'lipc:con' (8 car)
+…
+}
+```
+```
+void process_lipc_dbu(const char** line) {
+	const uint64_t MAGIC = 0x7562643a6370696c; // in string : 'lipc:dbu' (8 car)
+…
+}
+```
+```
+void process_lipc_gip(const char** line) {
+	const uint64_t MAGIC = 0x7069673a6370696c; // in string : 'lipc:gip' (8 car)
+…
+}
+```
+```
+void process_lipc_gsp(const char** line) {
+	const uint64_t MAGIC = 0x7073673a6370696c; // in string : 'lipc:gsp' (8 car)
+…
+}
+```
+
+-----
+
+## Provider LIPC_SET
+```
+#define MAGIC_LIPC_SET  0x7465732d6370696c // in string : 'lipc-set' (8 car)
+```
+```
+void process_def_cmd_(const char** line) {
+	const uint64_t MAGIC = 0x5f646d633a666564; // in string : 'def:cmd_' (8 car)
+…
+}
+```
+```
+void process_def_dbus(const char** line) {
+	const uint64_t MAGIC = 0x737562643a666564; // in string : 'def:dbus' (8 car)
+…
+}
+```
+```
+void process_def_fail(const char** line) {
+	const uint64_t MAGIC = 0x6c6961663a666564; // in string : 'def:fail' (8 car)
+…
+}
+```
+```
+void process_def_open(const char** line) {
+	const uint64_t MAGIC = 0x6e65706f3a666564; // in string : 'def:open' (8 car)
+…
+}
+```
+```
+void process_lipc_con(const char** line) {
+	const uint64_t MAGIC = 0x6e6f633a6370696c; // in string : 'lipc:con' (8 car)
+…
+}
+```
+```
+void process_lipc_sip(const char** line) {
+	const uint64_t MAGIC = 0x7069733a6370696c; // in string : 'lipc:sip' (8 car)
+…
+}
+```
+```
+void process_lipc_ssp(const char** line) {
+	const uint64_t MAGIC = 0x7073733a6370696c; // in string : 'lipc:ssp' (8 car)
+…
+}
+```
+
+-----
+
 ## Provider CVM
 ```
 #define MAGIC_CVM  0x5b6d7663 // in string : '    cvm[' (4 car)
 ```
 ```
+void process_activity(const char** line) {
+	const uint64_t MAGIC = 0x7974697669746341; // in string : 'Activity' (8 car)
+…
+}
+```
+```
 void process_annotati(const char** line) {
 	const uint64_t MAGIC = 0x697461746f6e6e41; // in string : 'Annotati' (8 car)
+…
+}
+```
+```
+void process_applicat(const char** line) {
+	const uint64_t MAGIC = 0x746163696c707041; // in string : 'Applicat' (8 car)
 …
 }
 ```
@@ -128,8 +571,32 @@ void process_catalogu(const char** line) {
 }
 ```
 ```
+void process_cdeandto(const char** line) {
+	const uint64_t MAGIC = 0x6f54646e41656443; // in string : 'CdeAndTo' (8 car)
+…
+}
+```
+```
 void process_charsetd(const char** line) {
 	const uint64_t MAGIC = 0x4474657372616843; // in string : 'CharsetD' (8 car)
+…
+}
+```
+```
+void process_communic(const char** line) {
+	const uint64_t MAGIC = 0x63696e756d6d6f43; // in string : 'Communic' (8 car)
+…
+}
+```
+```
+void process_connecti(const char** line) {
+	const uint64_t MAGIC = 0x697463656e6e6f43; // in string : 'Connecti' (8 car)
+…
+}
+```
+```
+void process_cookies_(const char** line) {
+	const uint64_t MAGIC = 0x3a7365696b6f6f43; // in string : 'Cookies:' (8 car)
 …
 }
 ```
@@ -142,6 +609,18 @@ void process_dbus_add(const char** line) {
 ```
 void process_dailyscr(const char** line) {
 	const uint64_t MAGIC = 0x726353796c696144; // in string : 'DailyScr' (8 car)
+…
+}
+```
+```
+void process_devicess(const char** line) {
+	const uint64_t MAGIC = 0x5353656369766544; // in string : 'DeviceSS' (8 car)
+…
+}
+```
+```
+void process_devicese(const char** line) {
+	const uint64_t MAGIC = 0x6553656369766544; // in string : 'DeviceSe' (8 car)
 …
 }
 ```
@@ -182,8 +661,20 @@ void process_framewor(const char** line) {
 }
 ```
 ```
+void process_guimanag(const char** line) {
+	const uint64_t MAGIC = 0x67616e614d495547; // in string : 'GUIManag' (8 car)
+…
+}
+```
+```
 void process_htmlbook(const char** line) {
 	const uint64_t MAGIC = 0x6b6f6f424c4d5448; // in string : 'HTMLBook' (8 car)
+…
+}
+```
+```
+void process_htmljson(const char** line) {
+	const uint64_t MAGIC = 0x6e6f734a4c4d5448; // in string : 'HTMLJson' (8 car)
 …
 }
 ```
@@ -230,6 +721,12 @@ void process_keyboard(const char** line) {
 }
 ```
 ```
+void process_kindleht(const char** line) {
+	const uint64_t MAGIC = 0x7448656c646e694b; // in string : 'KindleHt' (8 car)
+…
+}
+```
+```
 void process_language(const char** line) {
 	const uint64_t MAGIC = 0x65676175676e614c; // in string : 'Language' (8 car)
 …
@@ -248,8 +745,20 @@ void process_mainuico(const char** line) {
 }
 ```
 ```
+void process_mainview(const char** line) {
+	const uint64_t MAGIC = 0x776569566e69614d; // in string : 'MainView' (8 car)
+…
+}
+```
+```
 void process_manageri(const char** line) {
 	const uint64_t MAGIC = 0x49726567616e614d; // in string : 'ManagerI' (8 car)
+…
+}
+```
+```
+void process_marketpl(const char** line) {
+	const uint64_t MAGIC = 0x6c7074656b72614d; // in string : 'Marketpl' (8 car)
 …
 }
 ```
@@ -272,6 +781,12 @@ void process_mobilook(const char** line) {
 }
 ```
 ```
+void process_namedcol(const char** line) {
+	const uint64_t MAGIC = 0x6c6f4364656d614e; // in string : 'NamedCol' (8 car)
+…
+}
+```
+```
 void process_notedraw(const char** line) {
 	const uint64_t MAGIC = 0x7761724465746f4e; // in string : 'NoteDraw' (8 car)
 …
@@ -280,6 +795,12 @@ void process_notedraw(const char** line) {
 ```
 void process_overlayi(const char** line) {
 	const uint64_t MAGIC = 0x4979616c7265764f; // in string : 'OverlayI' (8 car)
+…
+}
+```
+```
+void process_pdfbookv(const char** line) {
+	const uint64_t MAGIC = 0x566b6f6f42464450; // in string : 'PDFBookV' (8 car)
 …
 }
 ```
@@ -404,8 +925,20 @@ void process_repaintq(const char** line) {
 }
 ```
 ```
+void process_reposito(const char** line) {
+	const uint64_t MAGIC = 0x6f7469736f706552; // in string : 'Reposito' (8 car)
+…
+}
+```
+```
 void process_ssbasewi(const char** line) {
 	const uint64_t MAGIC = 0x6957657361425353; // in string : 'SSBaseWi' (8 car)
+…
+}
+```
+```
+void process_sslclien(const char** line) {
+	const uint64_t MAGIC = 0x6e65696c434c5353; // in string : 'SSLClien' (8 car)
 …
 }
 ```
@@ -506,6 +1039,12 @@ void process_syncposi(const char** line) {
 }
 ```
 ```
+void process_syslogfo(const char** line) {
+	const uint64_t MAGIC = 0x6f46676f6c737953; // in string : 'SyslogFo' (8 car)
+…
+}
+```
+```
 void process_systemba(const char** line) {
 	const uint64_t MAGIC = 0x61426d6574737953; // in string : 'SystemBa' (8 car)
 …
@@ -514,6 +1053,12 @@ void process_systemba(const char** line) {
 ```
 void process_systemse(const char** line) {
 	const uint64_t MAGIC = 0x65536d6574737953; // in string : 'SystemSe' (8 car)
+…
+}
+```
+```
+void process_taskproc(const char** line) {
+	const uint64_t MAGIC = 0x636f72506b736154; // in string : 'TaskProc' (8 car)
 …
 }
 ```
@@ -544,6 +1089,24 @@ void process_textwidg(const char** line) {
 ```
 void process_threadpo(const char** line) {
 	const uint64_t MAGIC = 0x6f50646165726854; // in string : 'ThreadPo' (8 car)
+…
+}
+```
+```
+void process_udlcomm_(const char** line) {
+	const uint64_t MAGIC = 0x3a6d6d6f434c4455; // in string : 'UDLComm:' (8 car)
+…
+}
+```
+```
+void process_udlparse(const char** line) {
+	const uint64_t MAGIC = 0x65737261504c4455; // in string : 'UDLParse' (8 car)
+…
+}
+```
+```
+void process_udlstora(const char** line) {
+	const uint64_t MAGIC = 0x61726f74534c4455; // in string : 'UDLStora' (8 car)
 …
 }
 ```
@@ -602,6 +1165,24 @@ void process_wordfilt(const char** line) {
 }
 ```
 ```
+void process_esponse_(const char** line) {
+	const uint64_t MAGIC = 0x2065736e6f707365; // in string : 'esponse ' (8 car)
+…
+}
+```
+```
+void process_esponse>(const char** line) {
+	const uint64_t MAGIC = 0x3e65736e6f707365; // in string : 'esponse>' (8 car)
+…
+}
+```
+```
+void process_lipc_evt(const char** line) {
+	const uint64_t MAGIC = 0x7476653a6370696c; // in string : 'lipc:evt' (8 car)
+…
+}
+```
+```
 void process_lipc_gip(const char** line) {
 	const uint64_t MAGIC = 0x7069673a6370696c; // in string : 'lipc:gip' (8 car)
 …
@@ -614,33 +1195,14 @@ void process_lipc_gsp(const char** line) {
 }
 ```
 ```
+void process_lipc_ssp(const char** line) {
+	const uint64_t MAGIC = 0x7073733a6370696c; // in string : 'lipc:ssp' (8 car)
+…
+}
+```
+```
 void process_mwin_is_(const char** line) {
 	const uint64_t MAGIC = 0x5f73693a6e69776d; // in string : 'mwin:is_' (8 car)
-…
-}
-```
-
------
-
-## Provider PMOND
-```
-#define MAGIC_PMOND  0x5b646e6f6d70 // in string : '  pmond[' (6 car)
-```
-```
-void process_def_exit(const char** line) {
-	const uint64_t MAGIC = 0x746978653a666564; // in string : 'def:exit' (8 car)
-…
-}
-```
-```
-void process_def_gmem(const char** line) {
-	const uint64_t MAGIC = 0x6d656d673a666564; // in string : 'def:gmem' (8 car)
-…
-}
-```
-```
-void process_def_rst_(const char** line) {
-	const uint64_t MAGIC = 0x3a7473723a666564; // in string : 'def:rst:' (8 car)
 …
 }
 ```
@@ -666,93 +1228,6 @@ void process_slog_ng_(const char** line) {
 ```
 void process_ssage_le(const char** line) {
 	const uint64_t MAGIC = 0x656c206567617373; // in string : 'ssage le' (8 car)
-…
-}
-```
-
------
-
-## Provider WEBREADE
-```
-#define MAGIC_WEBREADE  0x6564616572626577 // in string : 'webreade' (8 car)
-```
-```
-void process_def_afte(const char** line) {
-	const uint64_t MAGIC = 0x657466613a666564; // in string : 'def:afte' (8 car)
-…
-}
-```
-```
-void process_def_asyn(const char** line) {
-	const uint64_t MAGIC = 0x6e7973613a666564; // in string : 'def:asyn' (8 car)
-…
-}
-```
-```
-void process_def_comm(const char** line) {
-	const uint64_t MAGIC = 0x6d6d6f633a666564; // in string : 'def:comm' (8 car)
-…
-}
-```
-```
-void process_def_proc(const char** line) {
-	const uint64_t MAGIC = 0x636f72703a666564; // in string : 'def:proc' (8 car)
-…
-}
-```
-```
-void process_def_trig(const char** line) {
-	const uint64_t MAGIC = 0x676972743a666564; // in string : 'def:trig' (8 car)
-…
-}
-```
-
------
-
-## Provider PHD
-```
-#define MAGIC_PHD  0x5b646870 // in string : '    phd[' (4 car)
-```
-```
-void process_lipc_sip(const char** line) {
-	const uint64_t MAGIC = 0x7069733a6370696c; // in string : 'lipc:sip' (8 car)
-…
-}
-```
-```
-void process_timer_no(const char** line) {
-	const uint64_t MAGIC = 0x6f6e3a72656d6974; // in string : 'timer:no' (8 car)
-…
-}
-```
-```
-void process_timer_re(const char** line) {
-	const uint64_t MAGIC = 0x65723a72656d6974; // in string : 'timer:re' (8 car)
-…
-}
-```
-```
-void process_wait_sig(const char** line) {
-	const uint64_t MAGIC = 0x6769733a74696177; // in string : 'wait:sig' (8 car)
-…
-}
-```
-```
-void process_wait_zzz(const char** line) {
-	const uint64_t MAGIC = 0x7a7a7a3a74696177; // in string : 'wait:zzz' (8 car)
-…
-}
-```
-
------
-
-## Provider CROND
-```
-#define MAGIC_CROND  0x5b646e6f7263 // in string : '  crond[' (6 car)
-```
-```
-void process_er_root_(const char** line) {
-	const uint64_t MAGIC = 0x20746f6f72205245; // in string : 'ER root ' (8 car)
 …
 }
 ```
