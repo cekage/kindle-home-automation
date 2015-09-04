@@ -1,9 +1,8 @@
 # Projet compter et afficher les lignes d'un fichier
 
 CC = cc
-CC_OPTIONS = -Werror -Wall -ggdb -pedantic -std=c99 -O0 -fstack-protector -lm
-CC_OPTIONS = -Werror -Wall -ggdb -pedantic -std=c99 -lm
-TGT = test_soc_stat 
+CFLAGS = -Werror -Wall -ggdb -pedantic -std=c99 -O0 -lm
+TGT = test_filter
 
 
 all: init astyle build run
@@ -12,7 +11,7 @@ clean:
 	rm $(TGT)
 
 build:
-	 $(CC) $(CC_OPTIONS) $(TGT).c -o  $(TGT)
+	 $(CC) $(CFLAGS) $(TGT).c -o  $(TGT)
 
 run:
 	./$(TGT)
@@ -43,3 +42,11 @@ splint:
 test: build run
 	valgrind -v --track-origins=yes --leak-check=full --error-exitcode=1 ./$(TGT) > /dev/null 2>&1
 
+coverage:
+	rm $(TGT).???? || echo "ok"
+	$(CC) $(CFLAGS) --coverage  $(TGT).c -o  $(TGT)
+	./$(TGT) > /dev/null
+	gcov $(TGT).c
+	lcov -o $(TGT).info -c -f -d .
+	genhtml -o coveragereport $(TGT).info
+	
