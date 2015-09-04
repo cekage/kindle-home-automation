@@ -1,7 +1,7 @@
 # Projet compter et afficher les lignes d'un fichier
 
 CC = cc
-CC_OPTIONS =  -Werror -Wall -ggdb -pedantic -std=c99 -O0 -fno-stack-protector -lm
+CFLAGS =  -Werror -Wall -ggdb -pedantic -std=c99 -O0 -fno-stack-protector -lm
 TGT = read_fifo
 
 all: init astyle build run
@@ -10,7 +10,7 @@ clean:
 	rm $(TGT)
 
 build:
-	 $(CC) $(CC_OPTIONS) $(TGT).c -o  $(TGT)
+	 $(CC) $(CFLAGS) $(TGT).c -o  $(TGT)
 
 run:
 	./$(TGT) < Docs/kindle.log
