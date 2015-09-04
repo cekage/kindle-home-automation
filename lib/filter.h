@@ -45,7 +45,7 @@
 
 
 #define MASK_64B 0xFFFFFFFFFFFFFFFF
-#define SUPPRES_FROM_MAGIC(x) MASK_64B >> 8*x
+#define SUPPRES_FROM_MAGIC(x) ((uint64_t) MASK_64B >> 8*x)
 #define REDUCE_THIS_MASK_BY(mask,by) mask, SUPPRES_FROM_MAGIC(by)
 
 /* ************** PROTO  ****************** */
@@ -119,14 +119,20 @@ bool check_MAGIC_64_64_masked(const char** line,
                               const uint64_t magic1, const uint64_t mask1,
                               const uint64_t magic2, const uint64_t mask2) {
     bool result = false;
-    //~ (void)printf("\ncmp %lx to %lx\n",magic1 & mask1,*((unsigned long*) *line)& mask1);
+    //~ (void)printf("\ncmp %lx to %lx\n", magic1 & mask1,
+    //~ *((unsigned long*) *line)& mask1);
     if ((magic1 & mask1) == (*((uint64_t*) *line)& mask1)) {
         //~ (void)printf("magic1/mask1 is ok\n");
         char* cursor;
         // MAGIC is 4 chars after the colon "prog.*[pid]: . MAGIC64?.*"
-        cursor = strchr(*line, ':') + 4;
-        //~ (void)printf("\ncmp %016lx to %016lx\n",magic2 & mask2,*((unsigned long*) cursor)& mask2);
-        result = ((magic2 & mask2) == (*((uint64_t*) cursor) & mask2));
+        cursor = strchr(*line, ':');
+        //~ (void)printf("cursor = %016lx\n",((unsigned long) cursor));
+        if (NULL != cursor) {
+            cursor += 4;
+            //~ (void)printf("\ncmp %016lx to %016lx\n", magic2 & mask2,
+            //~ *((unsigned long*) cursor)& mask2);
+            result = ((magic2 & mask2) == (*((uint64_t*) cursor) & mask2));
+        }
     }
     return result;
 }
