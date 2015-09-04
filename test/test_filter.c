@@ -532,7 +532,7 @@ TEST magic_32_64_not_enough_log() {
 }
 
 /*
-    Verify behavior true 32 & 64 magic
+    Verify behavior when masks are not 0xFF…FF
     Wanted result : true
 */
 TEST magic_32_64_masked_normal() {
@@ -544,13 +544,14 @@ TEST magic_32_64_masked_normal() {
     uint64_t maskexample =  0x00ffffffffffffff; // suppress the colon
     bool result;
     result = check_MAGIC_32_64_masked(&fakelog,
-                                      magicbw, maskbw, magicexample, maskexample);
+                                      magicbw, maskbw,
+                                      magicexample, maskexample);
     ASSERT_EQ(true, result);
     PASS();
 }
 
 /*
-    Verify behavior true 64 & 64 magic
+    Verify behavior when masks are not 0xFF…FF
     Wanted result : true
 */
 TEST magic_64_64_masked_normal() {
@@ -567,6 +568,10 @@ TEST magic_64_64_masked_normal() {
     PASS();
 }
 
+/*
+    Verify behavior when magic mask with REDUCE_THIS_MASK_BY macro
+    Wanted result : false first (when 0) then true.
+*/
 TEST magic_64_64_masked_MACRO() {
     const char* fakelog =
         "bw[s234]: X Example:key1=value1,key2=value2,Weird Comment -> Like ScreenSaver:";
@@ -576,11 +581,11 @@ TEST magic_64_64_masked_MACRO() {
     bool result;
     result = check_MAGIC_64_64_masked(&fakelog,
                                       magicbw, maskbw,
-                                      REDUCE_THIS_MASK_BY(magicexample,0));
+                                      REDUCE_THIS_MASK_BY(magicexample, 0));
     ASSERT_EQ(false, result);
     result = check_MAGIC_64_64_masked(&fakelog,
                                       magicbw, maskbw,
-                                      REDUCE_THIS_MASK_BY(magicexample,1));
+                                      REDUCE_THIS_MASK_BY(magicexample, 1));
     ASSERT_EQ(true, result);
     PASS();
 }
@@ -595,7 +600,11 @@ SUITE(suite_check_magic) {
     RUN_TEST(magic_64_64_masked_MACRO);
 }
 
-TEST check_regex_normal() {
+/*
+    Verify behavior of check_regexp without parenthesis
+    Wanted result : true
+*/
+TEST check_regex_normal_wo_parenthesis() {
     const char* fakelog =
         "powerd[1234]: I lipc:evts:name=outOfScreenSaver, origin=com.lab126.powerd, fparam=1:Event sent";
     const char* regexp_for_log =
@@ -605,8 +614,23 @@ TEST check_regex_normal() {
     PASS();
 }
 
+/*
+    Verify behavior of check_regexp without parenthesis
+    Wanted result : true
+*/
+TEST check_regex_normal_with_parenthesis() {
+    const char* fakelog =
+        "powerd[1234]: I lipc:evts:name=outOfScreenSaver, origin=com.lab126.powerd, fparam=1:Event sent";
+    const char* regexp_for_log =
+        "lipc:evts:name=(.*), origin=(com.lab126.powerd), fparam=(.+):Event sent$";
+    bool result = check_regexp(&fakelog, &regexp_for_log);
+    ASSERT_EQ(true, result);
+    PASS();
+}
+
 SUITE(suite_check_regexp) {
-    RUN_TEST(check_regex_normal);
+    RUN_TEST(check_regex_normal_wo_parenthesis);
+    RUN_TEST(check_regex_normal_with_parenthesis);
 }
 
 TEST check_regex_va_normal() {
@@ -650,7 +674,7 @@ TEST check_regex_va_not_enough_values_asked() {
 
 
 
-TEST check_regex_va_too_much_values_asked() {
+TEST check_regex_va_too_much_va_arg_provided() {
     const char* fakelog =
         "powerd[1234]: I lipc:evts:name=outOfScreenSaver, origin=com.lab126.powerd, fparam=1:Event sent";
     const char* regexp_for_log =
@@ -679,7 +703,22 @@ TEST check_regex_va_too_much_values_asked() {
 SUITE(suite_check_regexp_va) {
     RUN_TEST(check_regex_va_normal);
     RUN_TEST(check_regex_va_not_enough_values_asked);
-    RUN_TEST(check_regex_va_too_much_values_asked);
+    RUN_TEST(check_regex_va_too_much_va_arg_provided);
+}
+
+
+TEST check_afl_00001() {
+    const char* fakelog =
+        "cvm[1234]º E Fraed more times than beginUpdate()\0";
+    const uint64_t MAGIC = 0x656d656c70707553;
+    const uint32_t MAGIC_CVM = 0x5b6d7663;
+    (void)printf("strlen = %zu\n", strlen(fakelog));
+    (void)check_MAGIC_32_64(&fakelog, MAGIC_CVM, MAGIC);
+    PASS();
+}
+
+SUITE(check_afl_cases) {
+    RUN_TEST(check_afl_00001);
 }
 
 /* Add definitions that need to be in the test runner's main file. */
@@ -693,5 +732,6 @@ int main(int argc, char** argv) {
     RUN_SUITE(suite_check_magic);
     RUN_SUITE(suite_check_regexp);
     RUN_SUITE(suite_check_regexp_va);
+    RUN_SUITE(check_afl_cases);
     GREATEST_MAIN_END();        /* display results */
 }
